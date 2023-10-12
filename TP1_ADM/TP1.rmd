@@ -21,46 +21,25 @@ library(FactoMineR)
 WINE=read.csv("/Users/arthurtena/Documents/wine.csv")
 WINE
 ## centré toutes les variables :
-E=numeric(29)
 Quan=WINE[,4:32] ## ne donne que les variables quantitatives de WINE
-#for (j in 1:29){
-#      E[j]=mean(Quan[,j])
-#      V[j]=sd(Quan[,j])
-#  for (i in 1:21){
-#    Quan[i, j] <- (Quan[i, j] - E[j])/(V[j])
-#  }
-#}
-#Etot=mean(E)
-#E2=numeric(29)
-#for (j in 1:29){
-#  E2[j]=mean(Quan[,j])
-#}
-#E2
 
-#for (j in 1:29){
-#  palette=colorRampPalette(c("blue", "green", "red"))
-#  gradient_values=seq(0, 1, length.out = 100)
-#  gradient_colors=palette(length(gradient_values))
-#  Plotj=plot(x,Quan[,j], col=gradient_colors[j])
-#}
 ```
 
 ```{r}
 W=diag(1/21, 21) # matrice des poids
-I_11=diag(1, 21) #matrice identité de taille 11
+I_21=rep(1, 21) #matrice identité de taille 21
 Quan=WINE[,4:32]
 Q=matrix(0, nrow=21, ncol=29) #matrice des variables quantitatives
 for(j in 1:29){ 
   Q[,j]=Quan[[j]]
 }
 
-x_b=t(Q)%*%W%*%I_11
+x_b=t(Q)%*%W%*%I_21
 x_bt=t(x_b)
-x_c=Q - I_11%*%t(x_b) # le projecteur orthogonal sur I_41
-vec_norm=diag(diag(t(x_c)%*%W%*%x_c)) #normes des vecteurs
-print(vec_norm)
-x_c=x_c%*%solve(sqrt(vec_norm)) #normalisation des projetes
-bar=t(x_c)%*%W%*%I_11 
+x_c=Q - I_21%*%t(x_b) # le projecteur orthogonal sur I_21
+vec_norm=diag(diag(t(x_c)%*%W%*%x_c)) #normes des vecteurs``
+x_cr=x_c%*%solve(sqrt(vec_norm)) #normalisation des projetes
+bar=t(x_cr)%*%W%*%I_21 
 barycentre=t(bar)
 print(barycentre)
 inertie=sum(diag(t(x_c)%*%W%*%x_c))
@@ -71,14 +50,27 @@ print(inertie)
 
 ```{r}
 WINE
-#Bourg=subset(WINE, WINE$Label=='Bourgueuil')
-#Bourg2=Bourg[,4:32]
-#B=matrix(0, nrow=6, ncol=29)
-#Chin=subset(WINE, WINE$Label=='Chinon')
-#Chin2=Chin[,4:32]
-#C=matrix(0, nrow=4, ncol=29)
-#Saum=subset(WINE, WINE$Label=='Saumur')
-#Saum2=Saum[,4:32]
+Bourg=subset(WINE, WINE$Label=='Bourgueuil')
+Bourg2=Bourg[,4:32]
+B=matrix(0, nrow=6, ncol=29)
+Chin=subset(WINE, WINE$Label=='Chinon')
+Chin2=Chin[,4:32]
+C=matrix(0, nrow=4, ncol=29)
+Saum=subset(WINE, WINE$Label=='Saumur')
+Saum2=Saum[,4:32]
+S=matrix(0, nrow=11, ncol=29)
+
+for(j in 1:29){ 
+  B[,j]=Bourg2[[j]] ## je crée la matrice B avec les informations sur les bourgueui
+}
+
+for(j in 1:29){ 
+  C[,j]=Chin2[[j]] ## je crée la matrice C avec les informations sur les chinon
+}
+
+for(j in 1:29){ 
+  S[,j]=Saum2[[j]]  ## je crée la matrice S avec les informations sur les saumur
+}
 
 Poids_Chinon=0
 Poids_Bourgueuil=0
@@ -89,11 +81,109 @@ for (i in 1:21){
   else { Poids_Saumur = Poids_Saumur+1}
 }
 
-POIDS_Bourgueuil=Poids_Bourgueuil/21
-POIDS_Chinon=Poids_Chinon/21
-POIDS_Saumur=Poids_Saumur/21
-POIDS_Bourgueuil
-POIDS_Chinon
-POIDS_Saumur
-sum(POIDS_Bourgueuil,POIDS_Chinon,POIDS_Saumur)
+#POIDS_Bourgueuil=Poids_Bourgueuil/21
+#POIDS_Chinon=Poids_Chinon/21
+#POIDS_Saumur=Poids_Saumur/21
+W_B=diag(1/Poids_Bourgueuil, Poids_Bourgueuil)
+I_6=rep(1, 6)
+W_C=diag(1/Poids_Chinon, Poids_Chinon)
+I_4=rep(1, 4)
+W_S=diag(1/Poids_Saumur, Poids_Saumur)
+I_11=rep(1,11)
+
+## calcul du barycentre de bourgueuil 
+x_bg=t(B)%*%W_B%*%I_6 #dans le cours ^x vecteur avec toutes les moyennes de la classe bourgueuil 
+x_bgt=t(x_bg)
+x_bc=B-I_6%*%x_bgt #dans le cours x tilde ou x centré
+vec_norm_b=diag(diag(t(x_bc)%*%W_B%*%x_bc))
+x_bc=x_bc%*%solve(sqrt(vec_norm_b))
+bar=t(x_bc)%*%W_B%*%I_6 
+barycentre_b=t(bar)
+#print(barycentre_b)
+
+## calcul du barycentre de chinon 
+x_cg=t(C)%*%W_C%*%I_4 #dans le cours ^x vecteur avec toutes les moyennes de la classe bourgueuil 
+x_cgt=t(x_cg)
+x_cc=C-I_4%*%x_cgt #dans le cours x tilde ou x centré
+vec_norm_c=diag(diag(t(x_cc)%*%W_C%*%x_cc))
+x_ccr=x_cc%*%solve(sqrt(vec_norm_c))
+bar=t(x_ccr)%*%W_C%*%I_4 
+barycentre_c=t(bar)
+#print(barycentre_c)
+
+for (i in 1:4){
+  for (j in 1:29){
+    barycentre_c[i,j]=barycentre_c[i,j]^2
+    norme_eu_c=sum(barycentre_c[i,j])
+  }
+}
+print(norme_eu_c)
+inertie_Chinon=sum(diag(t(x_ccr)%*%W_C%*%x_ccr))
+print(inertie_Chinon)
+```
+
+```{r}
+
+
+
+
+## calcul du barycentre de chinon 
+x_cg=t(C)%*%W_C%*%I_4
+x_cgt=t(x_cg)
+x_cc=C-I_4%*%x_cgt
+vec_norm_c=diag(diag(t(x_cc)%*%W_C%*%x_cc))
+x_cc=x_cc%*%solve(sqrt(vec_norm_c))
+bar=t(x_cc)%*%W_C%*%I_4 
+barycentre_c=t(bar)
+#print(barycentre_c)
+
+## calcul du barycentre de Saumur  
+x_sg=t(S)%*%W_S%*%I_11
+x_sgt=t(x_sg)
+x_sc=S-I_11%*%x_sgt
+vec_norm_s=diag(diag(t(x_sc)%*%W_S%*%x_sc))
+x_sc=x_sc%*%solve(sqrt(vec_norm_s))
+bar=t(x_sc)%*%W_S%*%I_11 
+barycentre_s=t(bar)
+#print(barycentre_s)
+
+## Calcul de la norme carré des barycentres :
+#Bourgueuil :
+for (i in 1:6){
+  for (j in 1:29){
+    barycentre_b[i,j]=barycentre_b[i,j]^2
+    norme_eu_b=sum(barycentre_b[i,j])
+  }
+}
+
+#Chinon :
+for (i in 1:4){
+  for (j in 1:29){
+    barycentre_c[i,j]=barycentre_c[i,j]^2
+    norme_eu_c=sum(barycentre_c[i,j])
+  }
+}
+
+#Saumur :
+for (i in 1:11){
+  for (j in 1:29){
+    barycentre_s[i,j]=barycentre_s[i,j]^2
+    norme_eu_s=sum(barycentre_s[i,j])
+  }
+}
+print(c(norme_eu_b, norme_eu_c, norme_eu_s))
+
+## Calcul de l'inertie de chaque appelation pour trouver l'inertie inter-appelation :
+inertie_Bourgueuil=sum(diag(t(x_bc)%*%W_B%*%x_bc))
+print(inertie_Bourgueuil)
+
+inertie_Chinon=sum(diag(t(x_cc)%*%W_C%*%x_cc))
+print(inertie_Chinon)
+
+inertie_Saumur=sum(diag(t(x_sc)%*%W_S%*%x_sc))
+print(inertie_Saumur)
+print(c(inertie_Bourgueuil, inertie_Chinon, inertie_Saumur))
+
+inertie_Bourgueuil/inertie
+
 ```
