@@ -20,29 +20,6 @@ library(FactoMineR)
 ```{r}
 WINE=read.csv("/Users/arthurtena/Documents/wine.csv")
 WINE
-## centré toutes les variables :
-E=numeric(29)
-Quan=WINE[,4:32] ## ne donne que les variables quantitatives de WINE
-#for (j in 1:29){
-#      E[j]=mean(Quan[,j])
-#      V[j]=sd(Quan[,j])
-#  for (i in 1:21){
-#    Quan[i, j] <- (Quan[i, j] - E[j])/(V[j])
-#  }
-#}
-#Etot=mean(E)
-#E2=numeric(29)
-#for (j in 1:29){
-#  E2[j]=mean(Quan[,j])
-#}
-#E2
-
-#for (j in 1:29){
-#  palette=colorRampPalette(c("blue", "green", "red"))
-#  gradient_values=seq(0, 1, length.out = 100)
-#  gradient_colors=palette(length(gradient_values))
-#  Plotj=plot(x,Quan[,j], col=gradient_colors[j])
-#}
 ```
 
 ```{r}
