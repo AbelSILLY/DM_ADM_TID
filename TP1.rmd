@@ -44,7 +44,7 @@ inertie=sum(diag(t(x_c)%*%W%*%x_c))
 print(inertie)
 ```
 
-##Exercice 1 : question 2
+## Exercice 1 : question 2
 
 ```{r}
 WINE
@@ -119,5 +119,30 @@ bar=t(x_sc)%*%W_S%*%I_11
 barycentre_s=t(bar)
 #print(barycentre_s)
 
+## Calcul de la norme carré des barycentres :
+#Bourgueuil :
+for (i in 1:6){
+  for (j in 1:29){
+    barycentre_b[i,j]=barycentre_b[i,j]^2
+    norme_eu_b=sum(barycentre_b[i,j])
+  }
+}
+
+#Chinon :
+for (i in 1:4){
+  for (j in 1:29){
+    barycentre_c[i,j]=barycentre_c[i,j]^2
+    norme_eu_c=sum(barycentre_c[i,j])
+  }
+}
+
+#Saumur :
+for (i in 1:11){
+  for (j in 1:29){
+    barycentre_s[i,j]=barycentre_s[i,j]^2
+    norme_eu_s=sum(barycentre_s[i,j])
+  }
+}
+print(c(norme_eu_s, norme_eu_c, norme_eu_b))
 
 ```
