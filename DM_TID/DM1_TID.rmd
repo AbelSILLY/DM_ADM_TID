@@ -43,7 +43,7 @@ print(D_CHI2_Q_B4)
 ```
 La distribution qui se rapproche le plus de Q au sens du $\chi^2$ est cette fois ci la B(4,0.35)
 
-## Exercice 2:
+# Exercice 2:
 
 ```{r}
 XF<-rbind(
@@ -102,5 +102,14 @@ T<-as.data.frame(T)
 rownames(T)<-c("Agriculteur femme","Artisan femme", "Cadre femme","Profession i femme","Employés femme","Ouvrier femme","Agriculteur homme","Artisan homme", "Cadre homme","Profession i homme","Employés homme","Ouvrier homme")
 colnames(T)<-c("DE 15 à 29 ans","DE 30 à 49 ans","DE 30 à 39 ans","DE 40 à 49 ans","DE 50 à 59 ans","60 ans et plus")
 print(T)
+T<-T/sum(T)
+print(T)
+H_T<--(sum(T*log(T)))
+print(H_T)
+```
+
+```{r}
+I_C_AS<-H_C + H_AS - H_T
+print(I_C_AS)
 ```
 
