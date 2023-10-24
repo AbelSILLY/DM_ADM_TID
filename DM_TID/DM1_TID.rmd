@@ -45,4 +45,62 @@ La distribution qui se rapproche le plus de Q au sens du $\chi^2$ est cette fois
 
 ## Exercice 2:
 
+```{r}
+XF<-rbind(
+  c(27.8, 189.7, 70, 119.6, 187.6, 76.9),
+  c(117.4, 914, 357.9, 556.1, 525.8, 184.8),
+  c(564.9, 	2638.5, 1209,	1429.5,	1161.6, 360),
+  c(1353.7, 3735.7,	1840.7,	1895,	1507.8,	256.2),
+  c(1570.9, 3486.4, 1605.6, 1880.9, 1819.6, 397),
+  c(1271.6, 2648.6, 1285.9, 1362.7, 1300.4, 180.5)
+)#matrice des catégories socioprofessionnelles par âge pour les femmes
+XH<-rbind(
+  c(24.2, 146, 56.2, 89.8, 138, 43.4),
+  c(79.2, 645.6, 258.4, 387.2, 378.7, 128.7),
+  c(315.7, 1538.5, 685.3, 853.2, 719, 240.1),
+  c(613.3, 1750.4, 834.7, 915.7, 755.9, 123.7),
+  c(476, 865.5, 449.5, 416, 329.8, 58.3),
+  c(1085.8, 2133.9, 1065.5, 1065.5, 987.9, 130.1)
+)#matrice des catégories socioprofessionnelles par âge pour les hommes
+```
+
+```{r}
+C<-XH+XF #matrice des catégories socioprofessionnelles par âge indépendemment du sexe
+#print(C)
+P_c<-rep(0,6) #vecteur distribution de C
+for (i in 1:6){
+P_c[i]<-sum(C[i,])
+}
+P_c<-(P_c)/sum(C)
+print(P_c)
+H_C<-sum(-P_c*log(P_c)) #entropie de C
+print(H_C)
+```
+
+```{r}
+#Matrice AxS
+AS<-matrix(0,nrow=2,ncol=6)# les lignes représentent le sexe, et les colonnes les tranches d'age
+print(AS)
+for(i in 1:6){
+  AS[1,i]<-sum(XF[,i])
+  AS[2,i]<-sum(XH[,i])
+}
+print(AS) #au coeff (i,j) on a le nombre de travailleurs pour le sexe i et la tranche d'age j
+print(sum(AS[1,])) #nombre de travailleuses femmes
+print(sum(AS[2,])) #nombre de travailleurs hommes
+AS<-AS/sum(AS) 
+print(AS) # au coeff (i,j) on a la proba de tirer un travailleur du sexe i et de la tranche d'age j
+p_f<-sum(AS[1,]) #proba de tirer une femme
+p_h<-sum(AS[2,]) #proba de tirer un homme
+H_AS<--(sum(AS*log(AS)))
+print(H_AS)
+```
+
+```{r}
+T<-rbind(XF,XH)
+T<-as.data.frame(T)
+rownames(T)<-c("Agriculteur femme","Artisan femme", "Cadre femme","Profession i femme","Employés femme","Ouvrier femme","Agriculteur homme","Artisan homme", "Cadre homme","Profession i homme","Employés homme","Ouvrier homme")
+colnames(T)<-c("DE 15 à 29 ans","DE 30 à 49 ans","DE 30 à 39 ans","DE 40 à 49 ans","DE 50 à 59 ans","60 ans et plus")
+print(T)
+```
 
