@@ -1,3 +1,5 @@
+
+
 ---
 title: "TP1_ADM"
 author: "Arthur TENA"
@@ -9,40 +11,24 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-library(ggplot2)
-library(gridExtra)
-library(FactoMineR)
-```
-
 ## Exercice 1 :question 1
-
-```{r}
-WINE=read.csv("/Users/arthurtena/Documents/wine.csv")
-WINE
-## centré toutes les variables :
-Quan=WINE[,4:32] ## ne donne que les variables quantitatives de WINE
-
-```
-
 ```{r}
 W=diag(1/21, 21) # matrice des poids
+M=diag(1/29, 29)
 I_21=rep(1, 21) #matrice identité de taille 21
 Quan=WINE[,4:32]
 Q=matrix(0, nrow=21, ncol=29) #matrice des variables quantitatives
-for(j in 1:29){ 
-  Q[,j]=Quan[[j]]
+for(j in 1:29){
+Q[,j]=Quan[[j]]
 }
-
 x_b=t(Q)%*%W%*%I_21
-x_bt=t(x_b)
 x_c=Q - I_21%*%t(x_b) # le projecteur orthogonal sur I_21
 vec_norm=diag(diag(t(x_c)%*%W%*%x_c)) #normes des vecteurs``
 x_cr=x_c%*%solve(sqrt(vec_norm)) #normalisation des projetes
-bar=t(x_cr)%*%W%*%I_21 
+bar=t(x_cr)%*%W%*%I_21
 barycentre=t(bar)
 print(barycentre)
-inertie=sum(diag(t(x_c)%*%W%*%x_c))
+inertie=sum(diag(t(x_cr)%*%W%*%x_cr))
 print(inertie)
 ```
 
@@ -60,30 +46,27 @@ Saum=subset(WINE, WINE$Label=='Saumur')
 Saum2=Saum[,4:32]
 S=matrix(0, nrow=11, ncol=29)
 
-for(j in 1:29){ 
-  B[,j]=Bourg2[[j]] ## je crée la matrice B avec les informations sur les bourgueui
+for(j in 1:29){
+B[,j]=Bourg2[[j]] ## je crée la matrice B avec les informations sur les bourgueui
 }
 
-for(j in 1:29){ 
-  C[,j]=Chin2[[j]] ## je crée la matrice C avec les informations sur les chinon
+for(j in 1:29){
+C[,j]=Chin2[[j]] ## je crée la matrice C avec les informations sur les chinon
 }
 
-for(j in 1:29){ 
-  S[,j]=Saum2[[j]]  ## je crée la matrice S avec les informations sur les saumur
+for(j in 1:29){
+S[,j]=Saum2[[j]] ## je crée la matrice S avec les informations sur les saumur
 }
 
 Poids_Chinon=0
 Poids_Bourgueuil=0
 Poids_Saumur=0
 for (i in 1:21){
-   if(WINE[i,2]=="Bourgueuil"){Poids_Bourgueuil = Poids_Bourgueuil+1}
-  else if(WINE[i,2]=="Chinon"){Poids_Chinon = Poids_Chinon+1}
-  else { Poids_Saumur = Poids_Saumur+1}
+if(WINE[i,2]=="Bourgueuil"){Poids_Bourgueuil = Poids_Bourgueuil+1}
+else if(WINE[i,2]=="Chinon"){Poids_Chinon = Poids_Chinon+1}
+else { Poids_Saumur = Poids_Saumur+1}
 }
 
-#POIDS_Bourgueuil=Poids_Bourgueuil/21
-#POIDS_Chinon=Poids_Chinon/21
-#POIDS_Saumur=Poids_Saumur/21
 W_B=diag(1/Poids_Bourgueuil, Poids_Bourgueuil)
 I_6=rep(1, 6)
 W_C=diag(1/Poids_Chinon, Poids_Chinon)
@@ -91,99 +74,312 @@ I_4=rep(1, 4)
 W_S=diag(1/Poids_Saumur, Poids_Saumur)
 I_11=rep(1,11)
 
-## calcul du barycentre de bourgueuil 
-x_bg=t(B)%*%W_B%*%I_6 #dans le cours ^x vecteur avec toutes les moyennes de la classe bourgueuil 
+## calcul du barycentre de bourgueuil
+x_bg=t(B)%*%W_B%*%I_6 #dans le cours ^x vecteur avec toutes les moyennes de la classe bourgueuil
 x_bgt=t(x_bg)
 x_bc=B-I_6%*%x_bgt #dans le cours x tilde ou x centré
 vec_norm_b=diag(diag(t(x_bc)%*%W_B%*%x_bc))
-x_bc=x_bc%*%solve(sqrt(vec_norm_b))
-bar=t(x_bc)%*%W_B%*%I_6 
+x_bcr=x_bc%*%solve(sqrt(vec_norm_b))
+bar=t(x_bc)%*%W_B%*%I_6
 barycentre_b=t(bar)
-#print(barycentre_b)
+print(barycentre_b)
 
-## calcul du barycentre de chinon 
-x_cg=t(C)%*%W_C%*%I_4 #dans le cours ^x vecteur avec toutes les moyennes de la classe bourgueuil 
+## calcul du barycentre de chinon
+x_cg=t(C)%*%W_C%*%I_4 #dans le cours ^x vecteur avec toutes les moyennes de la classe bourgueuil
 x_cgt=t(x_cg)
 x_cc=C-I_4%*%x_cgt #dans le cours x tilde ou x centré
 vec_norm_c=diag(diag(t(x_cc)%*%W_C%*%x_cc))
 x_ccr=x_cc%*%solve(sqrt(vec_norm_c))
-bar=t(x_ccr)%*%W_C%*%I_4 
+bar=t(x_ccr)%*%W_C%*%I_4
 barycentre_c=t(bar)
 #print(barycentre_c)
 
-for (i in 1:4){
-  for (j in 1:29){
-    barycentre_c[i,j]=barycentre_c[i,j]^2
-    norme_eu_c=sum(barycentre_c[i,j])
-  }
-}
-print(norme_eu_c)
-inertie_Chinon=sum(diag(t(x_ccr)%*%W_C%*%x_ccr))
-print(inertie_Chinon)
-```
 
-```{r}
-
-
-
-
-## calcul du barycentre de chinon 
-x_cg=t(C)%*%W_C%*%I_4
-x_cgt=t(x_cg)
-x_cc=C-I_4%*%x_cgt
-vec_norm_c=diag(diag(t(x_cc)%*%W_C%*%x_cc))
-x_cc=x_cc%*%solve(sqrt(vec_norm_c))
-bar=t(x_cc)%*%W_C%*%I_4 
-barycentre_c=t(bar)
-#print(barycentre_c)
-
-## calcul du barycentre de Saumur  
+## calcul du barycentre de Saumur
 x_sg=t(S)%*%W_S%*%I_11
 x_sgt=t(x_sg)
 x_sc=S-I_11%*%x_sgt
 vec_norm_s=diag(diag(t(x_sc)%*%W_S%*%x_sc))
-x_sc=x_sc%*%solve(sqrt(vec_norm_s))
-bar=t(x_sc)%*%W_S%*%I_11 
+x_scr=x_sc%*%solve(sqrt(vec_norm_s))
+bar=t(x_scr)%*%W_S%*%I_11
 barycentre_s=t(bar)
 #print(barycentre_s)
+```
+
+```{r}
+W=diag(1/21, 21) # matrice des poids
+M=diag(1/29, 29)
+I_21=rep(1, 21) #matrice identité de taille 21
+Quan=WINE[,4:32]
+Q=matrix(0, nrow=21, ncol=29) #matrice des variables quantitatives
+for(j in 1:29){
+Q[,j]=Quan[[j]]
+}
+x_b=t(Q)%*%W%*%I_21
+x_c=Q - I_21%*%t(x_b) # le projecteur orthogonal sur I_21
+vec_norm=diag(diag(t(x_c)%*%W%*%x_c)) #normes des vecteurs``
+x_cr=x_c%*%solve(sqrt(vec_norm)) #normalisation des projetes
+tableau_cr=as.data.frame(x_cr)
+bar=t(x_cr)%*%W%*%I_21
+barycentre=t(bar)
+print(barycentre)
+inertie=sum(diag(t(x_cr)%*%W%*%x_cr))
+print(inertie)
+```
+
+```{r}
+for (i in (1:21)){
+for (j in (1:29)){
+
+
+    WINE[i,j+3]=tableau_cr[i,j]
+}
+}
+colMeans(WINE[,4:32], na.rm = T)
+inertie_total = sum(colMeans((WINE[1:21,4:32])^2, na.rm = TRUE))
+inertie_total
+Bourg=subset(WINE, WINE$Label=='Bourgueuil')
+Bourg2=Bourg[,4:32]
+B=matrix(0, nrow=6, ncol=29)
+Chin=subset(WINE, WINE$Label=='Chinon')
+Chin2=Chin[,4:32]
+C=matrix(0, nrow=4, ncol=29)
+Saum=subset(WINE, WINE$Label=='Saumur')
+Saum2=Saum[,4:32]
+S=matrix(0, nrow=11, ncol=29)
+
+for(j in 1:29){
+B[,j]=Bourg2[[j]] ## je crée la matrice B avec les informations sur les bourgueuils
+}
+
+for(j in 1:29){
+C[,j]=Chin2[[j]] ## je crée la matrice C avec les informations sur les chinons
+}
+
+for(j in 1:29){
+S[,j]=Saum2[[j]] ## je crée la matrice S avec les informations sur les saumurs
+}
+
+Poids_Chinon=0
+Poids_Bourgueuil=0
+Poids_Saumur=0
+for (i in 1:21){
+if(WINE[i,2]=="Bourgueuil"){Poids_Bourgueuil = Poids_Bourgueuil+1}
+else if(WINE[i,2]=="Chinon"){Poids_Chinon = Poids_Chinon+1}
+else { Poids_Saumur = Poids_Saumur+1}
+}
+
+#W_B=diag(Poids_Bourgueuil/21, Poids_Bourgueuil)
+W_B<-diag(1/Poids_Bourgueuil,Poids_Bourgueuil,Poids_Bourgueuil)
+#print(W_B)
+#W_C=diag(Poids_Chinon/21, Poids_Chinon)
+W_C<-diag(1/Poids_Chinon,Poids_Chinon,Poids_Chinon)
+#W_S=diag(Poids_Saumur/21, Poids_Saumur)
+W_S<-diag(1/Poids_Saumur,Poids_Saumur,Poids_Saumur)
+M_P<-diag(c(Poids_Bourgueuil/21,Poids_Chinon/21,Poids_Saumur/21)) #matrice des poids
+print(M_P)
+Bar_bourgueuil=colMeans(Bourg2)
+Bar_Chinon=colMeans(Chin2)
+Bar_Saumur=colMeans(Saum2)
+Barycentre_tot=rbind(Bar_bourgueuil,Bar_Chinon,Bar_Saumur)
+
+bar_b<-t(Bourg2)%*%W_B%*%rep(1,Poids_Bourgueuil)
+print(bar_b)
+bar_c<-t(Chin2)%*%W_C%*%rep(1,Poids_Chinon)
+print(bar_c)
+bar_s<-t(Saum2)%*%W_S%*%rep(1,Poids_Saumur)
+print(bar_s)
+
+NORM_B<-t(bar_b)%*%bar_b
+NORM_C<-t(bar_c)%*%bar_c
+NORM_S<-t(bar_s)%*%bar_s
+InEx<-(Poids_Bourgueuil/21)*NORM_B + (Poids_Chinon/21)*NORM_C + (Poids_Saumur/21)*NORM_S
+print(InEx)
+(InEx/inertie_total)*100
+library(ade4)
+Lab<-matrix(0,nrow=21,ncol=1)
+#for(j in 1:21){Lab[j,]<-(wine[j,2])}
+colnames(Lab)<-("Label")
+print(Lab)
+Y<-acm.disjonctif(Lab)
+print(Y)
+Y<-data.matrix(Y)
+print(Y)
+poids<-t(Y)%*%W%*%Y
+sum(diag(poids))
+print(poids)
+
+bar_cl<-solve(poids)%*%t(Y)%*%x_cr
+print(bar_cl)
+print(Barycentre_tot)
+```
+
+##Exercice 1 : question 2
+
+```{r}
 
 ## Calcul de la norme carré des barycentres :
 #Bourgueuil :
-for (i in 1:6){
-  for (j in 1:29){
-    barycentre_b[i,j]=barycentre_b[i,j]^2
-    norme_eu_b=sum(barycentre_b[i,j])
-  }
-}
+norme_eu_b=sum(Bar_bourgueuil^2)
 
 #Chinon :
-for (i in 1:4){
-  for (j in 1:29){
-    barycentre_c[i,j]=barycentre_c[i,j]^2
-    norme_eu_c=sum(barycentre_c[i,j])
-  }
-}
+norme_eu_c=sum(Bar_Chinon^2)
 
 #Saumur :
-for (i in 1:11){
-  for (j in 1:29){
-    barycentre_s[i,j]=barycentre_s[i,j]^2
-    norme_eu_s=sum(barycentre_s[i,j])
-  }
+norme_eu_s=sum(Bar_Saumur^2)
+
+print(c(norme_eu_b,norme_eu_c,norme_eu_s))
+
+
+inertie_externe = norme_eu_b*(Poids_Bourgueuil/21) + norme_eu_c*(Poids_Chinon/21) + norme_eu_s*(Poids_Saumur/21)
+print(inertie_externe)
+print(inertie)
+R2 = inertie_externe/inertie
+print(R2)
+pourecentagedisparite = R2*100
+print(pourecentagedisparite)
+```
+
+
+##Exercice 1 : question 3
+
+```{r}
+R2_variable = numeric(29)
+R2_variable = (Poids_Bourgueuil/21)*Bar_bourgueuil**2 + (Poids_Chinon/21)*Bar_Chinon**2 + (Poids_Saumur/21)*Bar_Saumur**2
+R2_variable
+max(R2_variable)
+print("la moyenne arithmétique des R2 des variables:")
+mean(R2_variable)
+print('R2 de la partition:')
+R2
+```
+Les variables les plus liées à l'appellation semblent être:
+- l'intensité de l'odeur
+- les composés phénoliques
+- l'intensité de l'odeur avant agitation
+
+Les variables les moins liées à l'appellation semblent être:
+- la qualité de l'odeur
+- le type de fleur/la floraison ?
+- l'aspect fruité du vin
+- l'aspect épicé avant agitation
+
+
+# Partie II:
+## Question 1:
+
+```{r}
+tableau_cr=as.data.frame(x_cr)
+for (i in (1:21)){
+for (j in (1:29)){
+
+    WINE[i,j+3]=tableau_cr[i,j]  # on mets da,s WINE les données centrées réduite extraites avant 
 }
-print(c(norme_eu_b, norme_eu_c, norme_eu_s))
+}
+Wine2=WINE[,c(2,4:32)]
+Wine2
+X<-x_cr
+print(X) #matrice des variables quantitatives centrées réduites
+print(Y) #matrice des indicatrices d'appellation
+print(W) #matrice des poids des individus
+M<-diag(1/dim(X)[2],dim(X)[2],dim(X)[2]) #matrice des poids des variables (équipondération)
+print(M)
 
-## Calcul de l'inertie de chaque appelation pour trouver l'inertie inter-appelation :
-inertie_Bourgueuil=sum(diag(t(x_bc)%*%W_B%*%x_bc))
-print(inertie_Bourgueuil)
+#Création de la matrixe PiY
+PiY<-Y%*%(solve(t(Y)%*%W%*%Y))%*%t(Y)%*%W #projecteur sur Y
+print(PiY)
 
-inertie_Chinon=sum(diag(t(x_cc)%*%W_C%*%x_cc))
-print(inertie_Chinon)
+#Création des matrice PiXj
 
-inertie_Saumur=sum(diag(t(x_sc)%*%W_S%*%x_sc))
-print(inertie_Saumur)
-print(c(inertie_Bourgueuil, inertie_Chinon, inertie_Saumur))
+Pi_Xj<-list()
+print(Pi_Xj)#liste de matrice qui aura pour valeur la matrice Pi_Xj à la coordonnée j
+for(j in 1:29){
+Pi_Xj[[j]]<-X[,j]%*%(solve(t(X[,j])%*%W%*%X[,j]))%*%t(X[,j])%*%W
+}
+#print(Pi_Xj)
 
-inertie_Bourgueuil/inertie
+# calcul de la trace pour chaque Xj
+####
+tr_Pi_Xj_PiY<-rep(0,29) #vecteur qui aura pour valeur la trace de PiXj*PiY en coordonnée j
+for(j in 1:29){
+tr_Pi_Xj_PiY[j]<-sum(diag(Pi_Xj[[j]]%*%PiY))
+}
+TR_Pi_Xj_PiY=as.data.frame(t(tr_Pi_Xj_PiY))
+colnames(TR_Pi_Xj_PiY)<-colnames(wine2)
+print(t(TR_Pi_Xj_PiY))
+R2_variable_bis=as.data.frame(t(R2_variable))
+#print(TR_Pi_Xj_PiY)
+dim(TR_Pi_Xj_PiY)
+dim(R2_variable_bis)
+#print(R2_variable_bis)
+for (i in (1:29)){
+R2_variable_bis[,i]=TR_Pi_Xj_PiY[,i]
+}
+print(R2_variable_bis) #vecteur contenant les R²(x^j|Y)=variance des x^j par appellation
+####
+# Question c)
+
+R<-X%*%M%*%t(X)%*%W
+print(sum(diag(R%*%PiY))) #Inertie interclasse
 
 ```
+
+## Question 2:
+
+```{r}
+Sol<-matrix(0,nrow=21,ncol=1)
+for(j in 1:21){Sol[j,]<-(WINE[j,3])}
+colnames(Sol)<-("Soil")
+print(Sol)
+library(ade4)
+Z<-acm.disjonctif(Sol)
+print(Y)
+Z<-data.matrix(Z)
+print(Z)
+PiZ<-Z%*%(solve(t(Z)%*%W%*%Z))%*%t(Z)%*%W
+print(PiZ)
+####
+tr_Pi_Xj_PiZ<-rep(0,29)
+for(j in 1:29){
+tr_Pi_Xj_PiZ[j]<-sum(diag(Pi_Xj[[j]]%*%PiZ))
+}
+TR_Pi_Xj_PiZ=as.data.frame(t(tr_Pi_Xj_PiZ))
+colnames(TR_Pi_Xj_PiZ)<-colnames(wine2)
+
+R2_variable_ter=as.data.frame(t(R2_variable))
+dim(TR_Pi_Xj_PiZ)
+dim(R2_variable_ter)
+for (i in (1:29)){
+R2_variable_ter[,i]=TR_Pi_Xj_PiZ[,i]
+}
+print(tr_Pi_Xj_PiZ)
+#print(R2_variable_ter)
+print(t(R2_variable_ter))
+print(t(TR_Pi_Xj_PiZ))
+####
+print(sum(diag(R%*%PiZ)))#la partition des vins par sol semble davantage expliquer les disparités entre les vins
+```
+Variables les plus liées au sol:
+- Odeur avant agitation
+- Aspect épicé avant agitation
+- Amertume
+- les plantes utilisées
+
+Variables les moins liées au sol:
+- les composés phénoliques
+- l'alcool
+- la nuance
+- intensité visuelle
+
+
+
+Les variables les plus liées à l'appellation semblent être:
+- l'intensité de l'odeur
+- les composés phénoliques
+- l'intensité de l'odeur avant agitation
+
+Les variables les moins liées à l'appellation semblent être:
+- la qualité de l'odeur
+- le type de fleur/la floraison ?
+- l'aspect fruité du vin
+- l'aspect épicé avant agitation
