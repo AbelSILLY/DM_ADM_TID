@@ -65,13 +65,13 @@ XH<-rbind(
 ```
 
 ```{r}
-C<-XH+XF #matrice des catégories socioprofessionnelles par âge indépendemment du sexe
+CA<-XH+XF #matrice des catégories socioprofessionnelles par âge indépendemment du sexe
 #print(C)
 P_c<-rep(0,6) #vecteur distribution de C
 for (i in 1:6){
-P_c[i]<-sum(C[i,])
+P_c[i]<-sum(CA[i,])
 }
-P_c<-(P_c)/sum(C)
+P_c<-(P_c)/sum(CA)
 print(P_c)
 H_C<-sum(-P_c*log(P_c)) #entropie de C
 print(H_C)
@@ -92,7 +92,7 @@ AS<-AS/sum(AS)
 print(AS) # au coeff (i,j) on a la proba de tirer un travailleur du sexe i et de la tranche d'age j
 p_f<-sum(AS[1,]) #proba de tirer une femme
 p_h<-sum(AS[2,]) #proba de tirer un homme
-H_AS<--(sum(AS*log(AS)))
+H_AS<--(sum(AS*log(AS)))#entropie de AxS
 print(H_AS)
 ```
 
@@ -104,12 +104,69 @@ colnames(T)<-c("DE 15 à 29 ans","DE 30 à 49 ans","DE 30 à 39 ans","DE 40 à 4
 print(T)
 T<-T/sum(T)
 print(T)
-H_T<--(sum(T*log(T)))
+H_T<--(sum(T*log(T)))#entropie de (C,(AxS))
 print(H_T)
 ```
 
 ```{r}
-I_C_AS<-H_C + H_AS - H_T
+I_C_AS<-H_C + H_AS - H_T #I(C,(AxS))
 print(I_C_AS)
 ```
+```{r}
+H_S<- -(p_f*log(p_f) + p_h*log(p_h)) #entropie de S
+print(H_S)
+```
+
+```{r}
+print(CA)
+CA<-CA/sum(CA)
+H_CA<- -sum(CA*log(CA)) #entropie de (CxA)
+print(H_CA)
+```
+
+```{r}
+I_S_CA<- H_S + H_CA - H_T
+print(I_S_CA)
+```
+
+```{r}
+M<-XF+XH
+A<-rep(0,6)
+for(j in 1:6){
+  A[j]<-sum(M[,j])
+}
+print(A)
+A<-A/sum(A) #distribution de l'age
+print(A) 
+H_A<--sum(A*log(A))
+print(H_A)
+```
+
+```{r}
+#print(XF)
+#print(XH)
+CF<-rep(0,6)
+CH<-rep(0,6)
+for(i in 1:6){
+  CF[i]<-sum(XF[i,])
+  CH[i]<-sum(XH[i,])
+}
+print(CF)
+print(CH)
+CS<-rbind(t(CF),t(CH))
+#print(t(CS))
+CS<-t(CS)
+colnames(CS)<-c("Femme","Homme")
+print(CS)
+CS<-CS/sum(CS) #coeff (i,j)= proba de tirer un travailleur de la classe socioprofessionnelle i et du sexe j
+H_CS<--sum(CS*log(CS))
+print(H_CS)
+```
+
+```{r}
+I_A_CS<-H_A + H_CS - H_T
+print(I_A_CS)
+print(max(I_A_CS,I_C_AS,I_S_CA))
+```
+La plus grande info mutuelle est I(C,(AxS)). On préfèrera donc conditionner par la catégorie socioprofessionnelle.
 
