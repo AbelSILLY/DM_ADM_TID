@@ -8,6 +8,15 @@ date: "2023-10-24"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+Entropie<-function(X=vector){
+  e =-sum(X*log(X))
+  e
+}
+print(Entropie((tableau$effectif)/sum(effectif)))
+```
+
+
 # Exercice 1:
 
 ```{r}
@@ -29,7 +38,7 @@ print(K_Q_B3)
 K_Q_B4 <-sum(log(Q/B4)*Q)
 print(K_Q_B4)
 ```
-La distribution qui se rapproche le plus au sens de Kullbach Leibler est la B(4,0.2).
+La distribution qui se rapproche le plus au sens de Kullbach Leibler est la B(4,0.3).
 
 ```{r}
 D_CHI2_Q_B1 <-sum(((Q-B1)^2)/Q)
@@ -41,32 +50,54 @@ print(D_CHI2_Q_B3)
 D_CHI2_Q_B4 <-sum(((Q-B4)^2)/Q)
 print(D_CHI2_Q_B4)
 ```
-La distribution qui se rapproche le plus de Q au sens du $\chi^2$ est cette fois ci la B(4,0.35)
+La distribution qui se rapproche le plus de Q au sens du $\chi^2$ est cette fois ci la B(4,0.25)
 
 # Exercice 2:
 
 ```{r}
+profession <- c(rep('Agriculteurs',2),rep('Artisans',2),rep('Cadres',2),rep('Prof_int',2),rep('Employes',2),rep('Ouvriers'),2)
+age <-c(rep('15-29',12),rep('30-39',12),rep('40-49',12),rep('50-59',12),rep('60-plus',12))
+sexe <-rep(c('Femmes','Hommes'),15)
+effectif<-c(27.8,24.2,117.4,79.2,564.9,315.7,1353.7,613.3,1570.9,476,
+1271.6,1085.8,70,56.2,357.9,258.4,1209,
+685.3,1840.7,834.7,1605.6,449.5,1285.9,1068.4,119.6,89.8,
+556.1,387.2,1429.5,853.2,1895,
+915.7,1880.9,416,1362.7,1065.5,187.1,138,525.8,378.7,
+1161.6,719,1507.8,755.9,1819.6,329.8,
+1300.4,987.9,76.9,43.4,184.8,128.7,360,240.1,256.2,123.7,
+397,58.3,180.5,130.1)
+tableau <- data.frame(age,profession,sexe, effectif)
+print(tableau)
+
+MA<-aggregate(effectif ~ age, data=tableau, sum)
+print(MA)
+MAS<-aggregate(effectif ~ age+sexe, data=tableau, sum)
+print(MAS)
+```
+
+
+```{r}
 XF<-rbind(
-  c(27.8, 189.7, 70, 119.6, 187.6, 76.9),
-  c(117.4, 914, 357.9, 556.1, 525.8, 184.8),
-  c(564.9, 	2638.5, 1209,	1429.5,	1161.6, 360),
-  c(1353.7, 3735.7,	1840.7,	1895,	1507.8,	256.2),
-  c(1570.9, 3486.4, 1605.6, 1880.9, 1819.6, 397),
-  c(1271.6, 2648.6, 1285.9, 1362.7, 1300.4, 180.5)
+  c(27.8, 70, 119.6, 187.1, 76.9),
+  c(117.4, 357.9, 556.1, 525.8, 184.8),
+  c(564.9, 1209,	1429.5,	1161.6, 360),
+  c(1353.7,	1840.7,	1895,	1507.8,	256.2),
+  c(1570.9, 1605.6, 1880.9, 1819.6, 397),
+  c(1271.6, 1285.9, 1362.7, 1300.4, 180.5)
 )#matrice des catégories socioprofessionnelles par âge pour les femmes
 XH<-rbind(
-  c(24.2, 146, 56.2, 89.8, 138, 43.4),
-  c(79.2, 645.6, 258.4, 387.2, 378.7, 128.7),
-  c(315.7, 1538.5, 685.3, 853.2, 719, 240.1),
-  c(613.3, 1750.4, 834.7, 915.7, 755.9, 123.7),
-  c(476, 865.5, 449.5, 416, 329.8, 58.3),
-  c(1085.8, 2133.9, 1065.5, 1065.5, 987.9, 130.1)
+  c(24.2, 56.2, 89.8, 138, 43.4),
+  c(79.2, 258.4, 387.2, 378.7, 128.7),
+  c(315.7, 685.3, 853.2, 719, 240.1),
+  c(613.3, 834.7, 915.7, 755.9, 123.7),
+  c(476, 449.5, 416, 329.8, 58.3),
+  c(1085.8, 1068.4, 1065.5, 987.9, 130.1)
 )#matrice des catégories socioprofessionnelles par âge pour les hommes
 ```
 
 ```{r}
 CA<-XH+XF #matrice des catégories socioprofessionnelles par âge indépendemment du sexe
-#print(C)
+print(CA)
 P_c<-rep(0,6) #vecteur distribution de C
 for (i in 1:6){
 P_c[i]<-sum(CA[i,])
@@ -79,9 +110,9 @@ print(H_C)
 
 ```{r}
 #Matrice AxS
-AS<-matrix(0,nrow=2,ncol=6)# les lignes représentent le sexe, et les colonnes les tranches d'age
+AS<-matrix(0,nrow=2,ncol=5)# les lignes représentent le sexe, et les colonnes les tranches d'age
 print(AS)
-for(i in 1:6){
+for(i in 1:5){
   AS[1,i]<-sum(XF[,i])
   AS[2,i]<-sum(XH[,i])
 }
@@ -100,7 +131,7 @@ print(H_AS)
 T<-rbind(XF,XH)
 T<-as.data.frame(T)
 rownames(T)<-c("Agriculteur femme","Artisan femme", "Cadre femme","Profession i femme","Employés femme","Ouvrier femme","Agriculteur homme","Artisan homme", "Cadre homme","Profession i homme","Employés homme","Ouvrier homme")
-colnames(T)<-c("DE 15 à 29 ans","DE 30 à 49 ans","DE 30 à 39 ans","DE 40 à 49 ans","DE 50 à 59 ans","60 ans et plus")
+colnames(T)<-c("DE 15 à 29 ans","DE 30 à 39 ans","DE 40 à 49 ans","DE 50 à 59 ans","60 ans et plus")
 print(T)
 T<-T/sum(T)
 print(T)
@@ -109,6 +140,8 @@ print(H_T)
 ```
 
 ```{r}
+print(H_C)
+print(H_AS)
 I_C_AS<-H_C + H_AS - H_T #I(C,(AxS))
 print(I_C_AS)
 ```
@@ -131,8 +164,9 @@ print(I_S_CA)
 
 ```{r}
 M<-XF+XH
-A<-rep(0,6)
-for(j in 1:6){
+print(M)
+A<-rep(0,5)
+for(j in 1:5){
   A[j]<-sum(M[,j])
 }
 print(A)
