@@ -28,6 +28,8 @@ B3<-c(0.2401,0.4116,0.2646,0.0756,0.0081) #B(4,0.3)
 B4<-c(0.1785063,0.384475,0.3105375,0.111475,0.01500625) #B(4,0.35)
 ```
 
+## Question 1
+
 ```{r}
 K_Q_B1 <-sum(log(Q/B1)*Q)
 print(K_Q_B1)
@@ -39,6 +41,8 @@ K_Q_B4 <-sum(log(Q/B4)*Q)
 print(K_Q_B4)
 ```
 La distribution qui se rapproche le plus au sens de Kullbach Leibler est la B(4,0.3).
+
+## Question 2
 
 ```{r}
 D_CHI2_Q_B1 <-sum(((Q-B1)^2)/Q)
@@ -75,6 +79,7 @@ MAS<-aggregate(effectif ~ age+sexe, data=tableau, sum)
 print(MAS)
 ```
 
+## Question 1
 
 ```{r}
 XF<-rbind(
@@ -204,9 +209,29 @@ print(max(I_A_CS,I_C_AS,I_S_CA))
 ```
 La plus grande info mutuelle est I(C,(AxS)). On préfèrera donc conditionner par la catégorie socioprofessionnelle.
 
+## Question 2
 
+Formule: I(X,Y)=H(X) + H(Y) - H(X,Y)
 
+```{r}
+I_CA<- H_C + H_A - H_CA
+print(I_CA)
+I_AS<-H_A + H_S - H_AS
+print(I_AS)
+I_CS<- H_C + H_S - H_CS
+print(I_CS)
+```
 
+```{r}
+I_A<- I_CA + I_AS
+I_S<- I_AS + I_CS
+I_C<- I_CA + I_CS
+print(I_A)
+print(I_S)
+print(I_C)
+```
+On commmence l'arbre avec la variable de catégorie socioprofessionnelle
+Comme I(A,S)=I(S,A) le choix de la seconde variable de ségmentation n'a pas d'importance.
 
 
 # Exercice 3
