@@ -58,27 +58,6 @@ La distribution qui se rapproche le plus de Q au sens du $\chi^2$ est cette fois
 
 # Exercice 2:
 
-```{r}
-profession <- c(rep('Agriculteurs',2),rep('Artisans',2),rep('Cadres',2),rep('Prof_int',2),rep('Employes',2),rep('Ouvriers'),2)
-age <-c(rep('15-29',12),rep('30-39',12),rep('40-49',12),rep('50-59',12),rep('60-plus',12))
-sexe <-rep(c('Femmes','Hommes'),15)
-effectif<-c(27.8,24.2,117.4,79.2,564.9,315.7,1353.7,613.3,1570.9,476,
-1271.6,1085.8,70,56.2,357.9,258.4,1209,
-685.3,1840.7,834.7,1605.6,449.5,1285.9,1068.4,119.6,89.8,
-556.1,387.2,1429.5,853.2,1895,
-915.7,1880.9,416,1362.7,1065.5,187.1,138,525.8,378.7,
-1161.6,719,1507.8,755.9,1819.6,329.8,
-1300.4,987.9,76.9,43.4,184.8,128.7,360,240.1,256.2,123.7,
-397,58.3,180.5,130.1)
-tableau <- data.frame(age,profession,sexe, effectif)
-print(tableau)
-
-MA<-aggregate(effectif ~ age, data=tableau, sum)
-print(MA)
-MAS<-aggregate(effectif ~ age+sexe, data=tableau, sum)
-print(MAS)
-```
-
 ## Question 1
 
 ```{r}
