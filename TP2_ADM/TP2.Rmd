@@ -9,3 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+Villesbrut=read.table("/Users/arthurtena/Documents/villes.csv", header=T)
+Villesbrut
+```
