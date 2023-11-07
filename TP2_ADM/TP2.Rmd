@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-Villesbrut=read.table("/Users/arthurtena/Documents/villes.csv", header=T)
-Villesbrut
+library(readr)
+villes <- read_delim("villes.csv", delim = "\t", 
+    escape_double = FALSE, trim_ws = TRUE)
+villes
 ```
