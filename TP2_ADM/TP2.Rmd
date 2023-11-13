@@ -13,5 +13,21 @@ knitr::opts_chunk$set(echo = TRUE)
 library(readr)
 villes <- read_delim("villes.csv", delim = "\t", 
     escape_double = FALSE, trim_ws = TRUE)
-villes
+Villes=villes[2:55]
+n=nrow(villes)
+villes=scale(Villes)*sqrt(n/(n-1))
+#print(villes)
+dv=dist(Villes, method="euclidean")
+#print(dv)
+CAHV = hclust(d=dv, method = "ward.D")
+plot(CAHV)
+PV2 = cutree(tree = CAHV, k=2)
+plot(PV2)
+R2_PV2 = cbind(rep(0 , ncol(villes)))
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2[i] = summary(lm(villes[,i]~as.factor(PV2)))$r.squared}
+row.names(R2_PV2) = colnames(Villes)
+R2G_PV2 = mean(R2_PV2)
+print(R2G_PV2)
+#boxplot(villes[,j]~as.factor(PV2))
 ```
