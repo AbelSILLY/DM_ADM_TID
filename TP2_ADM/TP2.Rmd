@@ -14,15 +14,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(readr)
-villes <- read_delim("villes.csv", delim = "\t", 
-    escape_double = FALSE, trim_ws = TRUE)
-Villes=villes[2:55]
+#villes <- read_delim("villes.csv", delim = "\t", 
+#    escape_double = FALSE, trim_ws = TRUE)
+#villes
+data<-read.table('./villes.csv',header=TRUE,fill=TRUE)
+rname<-data[,1]
+rname
+Villes=data[2:55]
+row.names(Villes)<-rname
+Villes
 n=nrow(villes)
 villes=scale(Villes)*sqrt(n/(n-1))
+villes
 dv=dist(Villes, method="euclidean") #création de la matrice des distances euclidiennes:
 #print(dv)
 CAHV = hclust(d=dv, method = "ward.D") # CAH avec Ward 
-#plot(CAHV) #Dendrogramme de la hiérarchie indicée
+plot(CAHV) #Dendrogramme de la hiérarchie indicée
 #Coupure de l'arbre et fabrication de la variable de classe correspondant à la partition obtenue, par exemple k=2 classes:
 PV2 = cutree(tree = CAHV, k=2)
 # Calcul du R2 des variables avec la variable de classe. On va stocker tous les R2 dans un seul vecteur: R2.
@@ -32,8 +39,10 @@ for (i in cbind(1:ncol(villes))) {
   R2_PV2[i] = summary(lm(villes[,i]~as.factor(PV2)))$r.squared}
 #On peut réassigner les noms des variables aux éléments de ce vecteur
 row.names(R2_PV2) = colnames(Villes)
+R2_PV2
 R2G_PV2 = mean(R2_PV2)
-#boxplot(villes[,9]~as.factor(PV2)) 
+R2G_PV2
+boxplot(villes[,9]~as.factor(PV2)) 
 #Transformation d'une variable qualitative en matrice d'indicatrices
 IC2Vil = data.frame(model.matrix(~as.factor(PV2)-1))
 print(IC2Vil)
@@ -56,7 +65,7 @@ Risques=as.data.frame(villes[,10:25])
 Nature=as.data.frame(villes[,35:40])
 Culture=as.data.frame(villes[,41:47])
 
-#Econnomie :
+#Economie :
 dve=dist(Economie, method="euclidean") #création de la matrice des distances euclidiennes
 CAHV = hclust(d=dve, method = "ward.D")
 plot(CAHV)
