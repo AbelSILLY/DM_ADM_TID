@@ -18,12 +18,13 @@ library(readr)
 #    escape_double = FALSE, trim_ws = TRUE)
 #villes
 data<-read.table('./villes.csv',header=TRUE,fill=TRUE)
+data
 rname<-data[,1]
 rname
 Villes=data[2:55]
 row.names(Villes)<-rname
 Villes
-n=nrow(villes)
+n=nrow(data)
 villes=scale(Villes)*sqrt(n/(n-1))
 villes
 dv=dist(Villes, method="euclidean") #création de la matrice des distances euclidiennes:
@@ -32,6 +33,7 @@ CAHV = hclust(d=dv, method = "ward.D") # CAH avec Ward
 plot(CAHV) #Dendrogramme de la hiérarchie indicée
 #Coupure de l'arbre et fabrication de la variable de classe correspondant à la partition obtenue, par exemple k=2 classes:
 PV2 = cutree(tree = CAHV, k=2)
+PV2
 # Calcul du R2 des variables avec la variable de classe. On va stocker tous les R2 dans un seul vecteur: R2.
 R2_PV2 = cbind(rep(0 , ncol(villes)))
 #Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
@@ -65,55 +67,144 @@ Risques=as.data.frame(villes[,10:25])
 Nature=as.data.frame(villes[,35:40])
 Culture=as.data.frame(villes[,41:47])
 
-#Economie :
-dve=dist(Economie, method="euclidean") #création de la matrice des distances euclidiennes
-CAHV = hclust(d=dve, method = "ward.D")
-plot(CAHV)
-PV2 = cutree(tree = CAHV, k=3)
-IC2ec = data.frame(model.matrix(~as.factor(PV2)-1))
-mIC2ec = as.matrix(IC2ec)
-mec = as.matrix(Economie)
-CentresC2 = solve(t(mIC2ec) %*% mIC2ec)  %*%  t(mIC2ec)%*% mec
-KMV2 = kmeans(Economie, CentresC2)
-KMV2$cluster
-
-#Risques :
-dvr=dist(Risques, method="euclidean") #création de la matrice des distances euclidiennes
-CAHV = hclust(d=dvr, method = "ward.D")
-plot(CAHV)
-PV2 = cutree(tree = CAHV, k=2)
-IC2ris = data.frame(model.matrix(~as.factor(PV2)-1))
-mIC2ris = as.matrix(IC2ris)
-mris = as.matrix(Risques)
-CentresC2 = solve(t(mIC2ris) %*% mIC2ris)  %*%  t(mIC2ris)%*% mris
-KMV2 = kmeans(Risques, CentresC2)
-KMV2$cluster
-
-#Nature :
-dvn=dist(Nature, method="euclidean") #création de la matrice des distances euclidiennes
-CAHV = hclust(d=dvn, method = "ward.D")
-plot(CAHV)
-PV2 = cutree(tree = CAHV, k=3)
-IC2nat = data.frame(model.matrix(~as.factor(PV2)-1))
-mIC2nat = as.matrix(IC2nat)
-mnat = as.matrix(Nature)
-CentresC2 = solve(t(mIC2nat) %*% mIC2nat)  %*%  t(mIC2nat)%*% mnat
-KMV2 = kmeans(Nature, CentresC2)
-KMV2$cluster
-
-#Culture :
-dvc=dist(Culture, method="euclidean") #création de la matrice des distances euclidiennes
-CAHV = hclust(d=dvc, method = "ward.D")
-plot(CAHV)
-PV2 = cutree(tree = CAHV, k=3)
-IC2cul = data.frame(model.matrix(~as.factor(PV2)-1))
-mIC2cul = as.matrix(IC2cul)
-mcul = as.matrix(Culture)
-CentresC2 = solve(t(mIC2cul) %*% mIC2cul)  %*%  t(mIC2cul)%*% mcul
-KMV2 = kmeans(Culture, CentresC2)
-KMV2$cluster
 ```
 
+```{r}
+#Economie :
+dve=dist(Economie, method="euclidean") #création de la matrice des distances euclidiennes
+CAHVE = hclust(d=dve, method = "ward.D")
+plot(CAHVE)
+PV2E = cutree(tree = CAHVE, k=3)
+IC2ec = data.frame(model.matrix(~as.factor(PV2E)-1))
+colnames(IC2ec)<-c("Classe 1 Eco","Classe 2 Eco","Classe 3 Eco")
+mIC2ec = as.matrix(IC2ec)
+mIC2ec
+mec = as.matrix(Economie)
+CentresC2E = solve(t(mIC2ec) %*% mIC2ec)  %*%  t(mIC2ec)%*% mec
+KMV2E = kmeans(Economie, CentresC2E)
+KMV2E_DF<-as.data.frame(KMV2E$cluster)
+KMV2E_DF
+R2_PV2E = cbind(rep(0 , ncol(villes)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2E[i] = summary(lm(villes[,i]~as.factor(PV2E)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2E) = colnames(Villes)
+which.max(R2_PV2E)
+R2_PV2E
+R2G_PV2E = mean(R2_PV2E)
+R2G_PV2E
+
+```
+La partition à travers les variables "Economie" permettent de capter 18% des disparités.
+Variables les plus liées: salaire annuel, metre carré ancien, impot revenu
+On décide de partitionner la classe Economie et 3 classes: "riches", "moyenne" et "pauvres"
+
+
+```{r}
+#Risques :
+dvr=dist(Risques, method="euclidean") #création de la matrice des distances euclidiennes
+CAHVR = hclust(d=dvr, method = "ward.D")
+plot(CAHVR)
+PV2R = cutree(tree = CAHVR, k=2)
+IC2ris = data.frame(model.matrix(~as.factor(PV2R)-1))
+colnames(IC2ris)<-c("Classe 1 Risque","Classe 2 Risque")
+mIC2ris = as.matrix(IC2ris)
+mris = as.matrix(Risques)
+CentresC2R = solve(t(mIC2ris) %*% mIC2ris)  %*%  t(mIC2ris)%*% mris
+KMV2R = kmeans(Risques, CentresC2R)
+KMV2R_DF<-as.data.frame(KMV2R$cluster)
+KMV2R_DF
+R2_PV2R = cbind(rep(0 , ncol(villes)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2R[i] = summary(lm(villes[,i]~as.factor(PV2R)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2R) = colnames(Villes)
+R2_PV2R
+R2G_PV2R = mean(R2_PV2R)
+R2G_PV2R
+
+```
+
+Variables les plus liées: terrain pollué, mortalité globale, décès infarctus
+La partition à travers les variables "Risques" permettent de capter 5% des disparités.
+
+
+
+```{r}
+#Nature :
+dvn=dist(Nature, method="euclidean") #création de la matrice des distances euclidiennes
+CAHVN = hclust(d=dvn, method = "ward.D")
+plot(CAHVN)
+PV2N = cutree(tree = CAHVN, k=2)
+IC2nat = data.frame(model.matrix(~as.factor(PV2N)-1))
+colnames(IC2nat)<-c("Classe 1 Nat","Classe 2 Nat")
+mIC2nat = as.matrix(IC2nat)
+mnat = as.matrix(Nature)
+CentresC2N = solve(t(mIC2nat) %*% mIC2nat)  %*%  t(mIC2nat)%*% mnat
+KMV2N = kmeans(Nature, CentresC2N)
+KMV2N_DF<-as.data.frame(KMV2N$cluster)
+KMV2N_DF
+R2_PV2N = cbind(rep(0 , ncol(villes)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2N[i] = summary(lm(villes[,i]~as.factor(PV2N)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2N) = colnames(Villes)
+R2_PV2N
+which.max(R2_PV2N)
+R2G_PV2N = mean(R2_PV2N)
+R2G_PV2N
+
+```
+
+Variables les plus liées: Soleil, Pluie, Température
+La partition à travers les variables "Nature" permettent de capter 8% des disparités.
+
+
+```{r}
+#Culture :
+dvc=dist(Culture, method="euclidean") #création de la matrice des distances euclidiennes
+CAHVC = hclust(d=dvc, method = "ward.D")
+plot(CAHVC)
+PV2C = cutree(tree = CAHVC, k=2)
+IC2cul = data.frame(model.matrix(~as.factor(PV2C)-1))
+colnames(IC2cul)<-c("Classe 1 Cult","Classe 2 Cult")
+mIC2cul = as.matrix(IC2cul)
+mcul = as.matrix(Culture)
+CentresC2C = solve(t(mIC2cul) %*% mIC2cul)  %*%  t(mIC2cul)%*% mcul
+KMV2C = kmeans(Culture, CentresC2C)
+KMV2C_DF<-as.data.frame(KMV2C$cluster)
+KMV2C_DF
+R2_PV2C = cbind(rep(0 , ncol(villes)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2C[i] = summary(lm(villes[,i]~as.factor(PV2C)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2C) = colnames(Villes)
+R2_PV2C
+which.max(R2_PV2C)
+R2G_PV2C = mean(R2_PV2C)
+R2G_PV2C
+```
+
+Variables les plus liées: Etudiant, Cinema,
+La partition à travers les variables "Culture" permettent de capter ~5% des disparités.
+
+
+```{r}
+mIC2ec
+mIC2ris
+mIC2nat
+mIC2cul
+mIC2<-cbind(mIC2ec,mIC2ris,mIC2nat,mIC2cul)
+mIC2
+```
+
+```{r}
+
+```
 
 
 
