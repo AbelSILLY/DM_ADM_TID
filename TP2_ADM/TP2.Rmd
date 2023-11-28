@@ -217,6 +217,9 @@ KMV2TOT[,2]<-KMV2TOT[,2]+3
 KMV2TOT[,3]<-KMV2TOT[,3]+5
 KMV2TOT[,4]<-KMV2TOT[,4]+7
 KMV2TOT
+nbmod<-4*rep(1,100)
+KMV2TOT<-cbind(nbmod,KMV2TOT)
+KMV2TOT
 KMV2TOT_DF<-as.data.frame(KMV2TOT)
 KMV2TOT_DF
 write_delim(KMV2TOT_DF,"./dfindic.txt",col_names=FALSE)
