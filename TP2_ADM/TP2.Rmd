@@ -199,11 +199,27 @@ mIC2ris
 mIC2nat
 mIC2cul
 mIC2<-cbind(mIC2ec,mIC2ris,mIC2nat,mIC2cul)
-mIC2
+row.names(mIC2)<-row.names(Villes)
+mIC2[50,]
+mIC2DF<-as.data.frame(mIC2)
+mIC2DF
+write_delim(mIC2DF,"./dfindic.txt",col_names = TRUE)
 ```
 
 ```{r}
-
+KMV2E$cluster
+KMV2E_DF
+KMV2R$cluster
+KMV2N$cluster
+KMV2C$cluster
+KMV2TOT<-cbind(KMV2E$cluster,KMV2R$cluster,KMV2N$cluster,KMV2C$cluster)
+KMV2TOT[,2]<-KMV2TOT[,2]+3
+KMV2TOT[,3]<-KMV2TOT[,3]+5
+KMV2TOT[,4]<-KMV2TOT[,4]+7
+KMV2TOT
+KMV2TOT_DF<-as.data.frame(KMV2TOT)
+KMV2TOT_DF
+write_delim(KMV2TOT_DF,"./dfindic.txt",col_names=FALSE)
 ```
 
 
