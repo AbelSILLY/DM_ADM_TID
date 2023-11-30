@@ -57,7 +57,7 @@ KMV2 = kmeans(villes, CentresC2)
 #La variable de classe ainsi produite est dans
 KMV2$cluster
 ```
-
+Deux classes: "Ouest Parisien", "Reste de la France"
 
 ## Création de Dataframe par Catégorie :
 
@@ -98,7 +98,8 @@ R2G_PV2E
 ```
 La partition à travers les variables "Economie" permet de capter 18% des disparités.
 Variables les plus liées: salaire annuel, metre carré ancien, impot revenu
-On décide de partitionner la classe Economie et 3 classes: "riches", "moyenne" et "pauvres"
+Classes: Activité (emploi)
+On décide de partitionner la classe Economie et 3 classes: "Fortement active", "moyennement active" et "faiblement active"
 
 
 ```{r}
@@ -128,7 +129,32 @@ R2G_PV2R
 ```
 
 Variables les plus liées: terrain pollué, mortalité globale, décès infarctus
+Classe: pollution
+industrielle, portuaire, urbaine, agricole
 La partition à travers les variables "Risques" permet de capter 5% des disparités.
+
+
+1. Fos-sur-Mer – Présence de métaux lourds et de substances chimiques toxiques provenant des industries.
+2. Dunkerque – Pollution par les métaux lourds et les hydrocarbures en raison des activités industrielles et portuaires.
+3. Le Havre – Pollution par les hydrocarbures et les produits chimiques liés aux activités portuaires et industrielles.
+4. Nantes – Présence de polluants tels que les hydrocarbures et les métaux lourds provenant de l’industrie et de                l’urbanisation.
+5. Saint-Étienne – Pollution historique due à l’industrie, impliquant des métaux lourds et des produits chimiques.
+6. Grenoble – Présence de métaux lourds et de composés chimiques toxiques provenant de l’industrie et de la circulation         routière.
+7. Lyon – Pollution par les hydrocarbures, les métaux lourds et les polluants atmosphériques, en grande partie dus à            l’urbanisation et à l’industrie.
+8. Marseille – Présence de métaux lourds et de polluants chimiques en raison des activités portuaires, industrielles et         urbaines.
+9. Strasbourg – Pollution par les métaux lourds et les produits chimiques provenant de l’industrie et de l’urbanisation.
+10. Rouen – Pollution par les hydrocarbures et les substances chimiques toxiques en raison des activités industrielles et        portuaires.
+11. Lille – Pollution des sols par les métaux lourds et les contaminants chimiques provenant de l’industrie et de l’urbanisation.
+12. Paris – Pollution des sols due aux activités industrielles, à la circulation automobile et à l’urbanisation.
+13. Toulouse – Présence de métaux lourds et de produits chimiques provenant de l’industrie et de l’urbanisation.
+14. Nice – Pollution par les hydrocarbures et les métaux lourds liés à l’urbanisation et au trafic routier.
+15. Montpellier – Pollution des sols due à l’urbanisation, aux activités agricoles et aux produits chimiques.
+16. Bordeaux – Présence de métaux lourds et de contaminants chimiques provenant de l’industrie et de l’urbanisation.
+17. Rennes – Pollution des sols par les métaux lourds, les produits chimiques et les déchets urbains.
+18. Nancy – Présence de métaux lourds et de contaminants chimiques provenant de l’industrie et de l’urbanisation.
+19. Reims – Pollution des sols due à l’industrie, à l’urbanisation et aux activités agricoles.
+20. Mulhouse – Présence de métaux lourds et de produits chimiques toxiques en raison des activités industrielles et urbaines.
+
 
 
 
@@ -160,6 +186,8 @@ R2G_PV2N
 ```
 
 Variables les plus liées: Soleil, Pluie, Température
+Variable de classe: Localisation
+Classes: "Mer Méditerannée", "Reste de la France"
 La partition à travers les variables "Nature" permet de capter 8% des disparités.
 
 
@@ -191,6 +219,8 @@ R2G_PV2C
 
 Variables les plus liées: Etudiant, Cinema,
 La partition à travers les variables "Culture" permet de capter ~5% des disparités.
+Variable de classe: 
+Classes: "Ville Etudiante","Ville non Etudiante"
 
 
 ```{r}
