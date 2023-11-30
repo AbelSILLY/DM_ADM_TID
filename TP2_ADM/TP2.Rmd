@@ -42,9 +42,12 @@ for (i in cbind(1:ncol(villes))) {
 #On peut réassigner les noms des variables aux éléments de ce vecteur
 row.names(R2_PV2) = colnames(Villes)
 R2_PV2
+which.min(R2_PV2)
+min(R2_PV2)
 R2G_PV2 = mean(R2_PV2)
 R2G_PV2
-boxplot(villes[,9]~as.factor(PV2)) 
+boxplot(villes[,9]~as.factor(PV2))
+boxplot(villes[,33]~as.factor(PV2)) 
 #Transformation d'une variable qualitative en matrice d'indicatrices
 IC2Vil = data.frame(model.matrix(~as.factor(PV2)-1))
 print(IC2Vil)
@@ -56,9 +59,11 @@ CentresC2 = solve(t(mIC2Vil) %*% mIC2Vil)  %*%  t(mIC2Vil)%*% mVil
 KMV2 = kmeans(villes, CentresC2)
 #La variable de classe ainsi produite est dans
 KMV2$cluster
+KMV2
 ```
 Deux classes: "Ouest Parisien", "Reste de la France"
-
+Plus grand R^2: Salaire annuel (9)
+Plus petit R^2: Logement Vacant (33)
 ## Création de Dataframe par Catégorie :
 
 ```{r}
@@ -255,8 +260,27 @@ KMV2TOT_DF
 write_delim(KMV2TOT_DF,"./dfindic.txt",col_names=FALSE)#pour exporter le fichier txt à mettre dans Galicia
 ```
 
+# 4- Classification de variables
 
+```{r}
+library(ClustOfVar)
+tree_var<-hclustvar(villes)
+plot(tree_var)
+CVAR = cutree(tree = tree_var, k=4)
+CVAR
+```
 
+Classe 1:
+Chomage, EvoluEmploiCree, DefaillEntreprise, MortaliteInfantile,MortaliteCancerPoumon, MortaliteAlcool, DecesInfarctus, TauxSuicide, MortaliteGlobale, MetreCubeEau, LogtInsalubre, LogtVacant, LogtConstruction, Ski, Soleil, Pluie, Temperature, MarcheAPied, PretLivres, Presse, EvolDemographique,
+Vieillissement
 
+Classe 2:
+ChomageJeunes, ChomageLong, Activite, EmploiFeminin, Criminalite, EvolutionCrimes, SecuriteRoutiere,
+Inondations, TerrainsPollues, UsinesRisques, TaxeHabitation, Proprietaires, LogtSup4pieces,
+Mer, Cinema, Etudiants, AttiranceGlobale, AttiranceActifs
 
+Classe 3: 
+EmploiCommune, SalaireAnnuel, TailleClassesPrimaires, Retard6eme, Retard3eme, RetardTerminale, MetreCarreAncien, FoncierBati, ImpotRevenu, ImpotFortune, Imposables
 
+Classe 4:
+Musees, MonumHistoriques, RestaurDistingues
