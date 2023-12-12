@@ -1,0 +1,1036 @@
+<FAM name="dfindic.txt">
+<BIN name="dfindic.txt" nbObj="100" nbAtt="9" type="BinaryRelation">
+<OBJS>
+<OBJ id="0">Agen</OBJ>
+<OBJ id="1">AixEnProvence</OBJ>
+<OBJ id="2">Ajaccio</OBJ>
+<OBJ id="3">Albi</OBJ>
+<OBJ id="4">Amiens</OBJ>
+<OBJ id="5">Angers</OBJ>
+<OBJ id="6">Angouleme</OBJ>
+<OBJ id="7">Annecy</OBJ>
+<OBJ id="8">Antibes</OBJ>
+<OBJ id="9">Arles</OBJ>
+<OBJ id="10">Auxerre</OBJ>
+<OBJ id="11">Avignon</OBJ>
+<OBJ id="12">Bastia</OBJ>
+<OBJ id="13">Bayonne</OBJ>
+<OBJ id="14">Beauvais</OBJ>
+<OBJ id="15">Belfort</OBJ>
+<OBJ id="16">Besancon</OBJ>
+<OBJ id="17">Beziers</OBJ>
+<OBJ id="18">Blois</OBJ>
+<OBJ id="19">Bordeaux</OBJ>
+<OBJ id="20">BoulogneBillancourt</OBJ>
+<OBJ id="21">BourgEnBresse</OBJ>
+<OBJ id="22">Bourges</OBJ>
+<OBJ id="23">Brest</OBJ>
+<OBJ id="24">BrivesLaGaillarde</OBJ>
+<OBJ id="25">Caen</OBJ>
+<OBJ id="26">Calais</OBJ>
+<OBJ id="27">Cannes</OBJ>
+<OBJ id="28">Carcassonne</OBJ>
+<OBJ id="29">Castres</OBJ>
+<OBJ id="30">ChalonSurSaone</OBJ>
+<OBJ id="31">Chambery</OBJ>
+<OBJ id="32">CharlevilleMezieres</OBJ>
+<OBJ id="33">Chartres</OBJ>
+<OBJ id="34">Cholet</OBJ>
+<OBJ id="35">ClermontFerrand</OBJ>
+<OBJ id="36">Colmar</OBJ>
+<OBJ id="37">Compiegne</OBJ>
+<OBJ id="38">CorbeilEssonnes</OBJ>
+<OBJ id="39">Creteil</OBJ>
+<OBJ id="40">Dijon</OBJ>
+<OBJ id="41">Dunkerque</OBJ>
+<OBJ id="42">Epinal</OBJ>
+<OBJ id="43">Evry</OBJ>
+<OBJ id="44">Gap</OBJ>
+<OBJ id="45">Grenoble</OBJ>
+<OBJ id="46">LaRochelle</OBJ>
+<OBJ id="47">LaRocheSurYon</OBJ>
+<OBJ id="48">Laval</OBJ>
+<OBJ id="49">LeHavre</OBJ>
+<OBJ id="50">LeMans</OBJ>
+<OBJ id="51">Lille</OBJ>
+<OBJ id="52">Limoges</OBJ>
+<OBJ id="53">Lyon</OBJ>
+<OBJ id="54">Marseille</OBJ>
+<OBJ id="55">Melun</OBJ>
+<OBJ id="56">Metz</OBJ>
+<OBJ id="57">Montauban</OBJ>
+<OBJ id="58">Montlucon</OBJ>
+<OBJ id="59">Montpellier</OBJ>
+<OBJ id="60">Mulhouse</OBJ>
+<OBJ id="61">Nancy</OBJ>
+<OBJ id="62">Nantes</OBJ>
+<OBJ id="63">NeuillySurSeine</OBJ>
+<OBJ id="64">Nevers</OBJ>
+<OBJ id="65">Nice</OBJ>
+<OBJ id="66">Nimes</OBJ>
+<OBJ id="67">Niort</OBJ>
+<OBJ id="68">Orleans</OBJ>
+<OBJ id="69">Paris</OBJ>
+<OBJ id="70">Pau</OBJ>
+<OBJ id="71">Perigueux</OBJ>
+<OBJ id="72">Perpignan</OBJ>
+<OBJ id="73">Poitiers</OBJ>
+<OBJ id="74">Quimper</OBJ>
+<OBJ id="75">Reims</OBJ>
+<OBJ id="76">Rennes</OBJ>
+<OBJ id="77">Rouen</OBJ>
+<OBJ id="78">RueilMalmaison</OBJ>
+<OBJ id="79">SaintBrieuc</OBJ>
+<OBJ id="80">SaintDenis</OBJ>
+<OBJ id="81">SaintEtienne</OBJ>
+<OBJ id="82">SaintGermainEnLaye</OBJ>
+<OBJ id="83">SaintMalo</OBJ>
+<OBJ id="84">SaintNazaire</OBJ>
+<OBJ id="85">SaintQuentin</OBJ>
+<OBJ id="86">Sarcelles</OBJ>
+<OBJ id="87">Sete</OBJ>
+<OBJ id="88">Strasbourg</OBJ>
+<OBJ id="89">Tarbes</OBJ>
+<OBJ id="90">Toulon</OBJ>
+<OBJ id="91">Toulouse</OBJ>
+<OBJ id="92">Tours</OBJ>
+<OBJ id="93">Troyes</OBJ>
+<OBJ id="94">Valence</OBJ>
+<OBJ id="95">Valenciennes</OBJ>
+<OBJ id="96">Vannes</OBJ>
+<OBJ id="97">Versailles</OBJ>
+<OBJ id="98">Vichy</OBJ>
+<OBJ id="99">Villeurbanne</OBJ>
+</OBJS>
+<ATTS>
+<ATT id="0">Moyennement Active</ATT>
+<ATT id="1">Faiblement active</ATT>
+<ATT id="2">Fortement Active</ATT>
+<ATT id="3">Industrielle et Urbaine</ATT>
+<ATT id="4">Industrielle et Portuaire</ATT>
+<ATT id="5">Reste de la France</ATT>
+<ATT id="6">Mer Méditérrané</ATT>
+<ATT id="7">Villes Non Etudiante</ATT>
+<ATT id="8">Villes Etudiante</ATT>
+</ATTS>
+<RELS>
+<REL idObj="0" idAtt="0"></REL>
+<REL idObj="0" idAtt="3"></REL>
+<REL idObj="0" idAtt="5"></REL>
+<REL idObj="0" idAtt="7"></REL>
+<REL idObj="1" idAtt="0"></REL>
+<REL idObj="1" idAtt="3"></REL>
+<REL idObj="1" idAtt="6"></REL>
+<REL idObj="1" idAtt="8"></REL>
+<REL idObj="2" idAtt="1"></REL>
+<REL idObj="2" idAtt="3"></REL>
+<REL idObj="2" idAtt="6"></REL>
+<REL idObj="2" idAtt="7"></REL>
+<REL idObj="3" idAtt="1"></REL>
+<REL idObj="3" idAtt="3"></REL>
+<REL idObj="3" idAtt="5"></REL>
+<REL idObj="3" idAtt="7"></REL>
+<REL idObj="4" idAtt="1"></REL>
+<REL idObj="4" idAtt="4"></REL>
+<REL idObj="4" idAtt="5"></REL>
+<REL idObj="4" idAtt="8"></REL>
+<REL idObj="5" idAtt="0"></REL>
+<REL idObj="5" idAtt="3"></REL>
+<REL idObj="5" idAtt="5"></REL>
+<REL idObj="5" idAtt="8"></REL>
+<REL idObj="6" idAtt="0"></REL>
+<REL idObj="6" idAtt="4"></REL>
+<REL idObj="6" idAtt="5"></REL>
+<REL idObj="6" idAtt="7"></REL>
+<REL idObj="7" idAtt="0"></REL>
+<REL idObj="7" idAtt="3"></REL>
+<REL idObj="7" idAtt="5"></REL>
+<REL idObj="7" idAtt="7"></REL>
+<REL idObj="8" idAtt="0"></REL>
+<REL idObj="8" idAtt="3"></REL>
+<REL idObj="8" idAtt="6"></REL>
+<REL idObj="8" idAtt="7"></REL>
+<REL idObj="9" idAtt="1"></REL>
+<REL idObj="9" idAtt="3"></REL>
+<REL idObj="9" idAtt="6"></REL>
+<REL idObj="9" idAtt="7"></REL>
+<REL idObj="10" idAtt="0"></REL>
+<REL idObj="10" idAtt="3"></REL>
+<REL idObj="10" idAtt="5"></REL>
+<REL idObj="10" idAtt="8"></REL>
+<REL idObj="11" idAtt="1"></REL>
+<REL idObj="11" idAtt="3"></REL>
+<REL idObj="11" idAtt="6"></REL>
+<REL idObj="11" idAtt="8"></REL>
+<REL idObj="12" idAtt="1"></REL>
+<REL idObj="12" idAtt="3"></REL>
+<REL idObj="12" idAtt="6"></REL>
+<REL idObj="12" idAtt="7"></REL>
+<REL idObj="13" idAtt="0"></REL>
+<REL idObj="13" idAtt="3"></REL>
+<REL idObj="13" idAtt="5"></REL>
+<REL idObj="13" idAtt="7"></REL>
+<REL idObj="14" idAtt="1"></REL>
+<REL idObj="14" idAtt="4"></REL>
+<REL idObj="14" idAtt="5"></REL>
+<REL idObj="14" idAtt="7"></REL>
+<REL idObj="15" idAtt="0"></REL>
+<REL idObj="15" idAtt="4"></REL>
+<REL idObj="15" idAtt="5"></REL>
+<REL idObj="15" idAtt="7"></REL>
+<REL idObj="16" idAtt="0"></REL>
+<REL idObj="16" idAtt="3"></REL>
+<REL idObj="16" idAtt="5"></REL>
+<REL idObj="16" idAtt="8"></REL>
+<REL idObj="17" idAtt="1"></REL>
+<REL idObj="17" idAtt="3"></REL>
+<REL idObj="17" idAtt="6"></REL>
+<REL idObj="17" idAtt="7"></REL>
+<REL idObj="18" idAtt="0"></REL>
+<REL idObj="18" idAtt="3"></REL>
+<REL idObj="18" idAtt="5"></REL>
+<REL idObj="18" idAtt="7"></REL>
+<REL idObj="19" idAtt="0"></REL>
+<REL idObj="19" idAtt="4"></REL>
+<REL idObj="19" idAtt="5"></REL>
+<REL idObj="19" idAtt="8"></REL>
+<REL idObj="20" idAtt="2"></REL>
+<REL idObj="20" idAtt="3"></REL>
+<REL idObj="20" idAtt="5"></REL>
+<REL idObj="20" idAtt="7"></REL>
+<REL idObj="21" idAtt="0"></REL>
+<REL idObj="21" idAtt="3"></REL>
+<REL idObj="21" idAtt="5"></REL>
+<REL idObj="21" idAtt="7"></REL>
+<REL idObj="22" idAtt="1"></REL>
+<REL idObj="22" idAtt="3"></REL>
+<REL idObj="22" idAtt="5"></REL>
+<REL idObj="22" idAtt="7"></REL>
+<REL idObj="23" idAtt="1"></REL>
+<REL idObj="23" idAtt="4"></REL>
+<REL idObj="23" idAtt="5"></REL>
+<REL idObj="23" idAtt="7"></REL>
+<REL idObj="24" idAtt="1"></REL>
+<REL idObj="24" idAtt="3"></REL>
+<REL idObj="24" idAtt="5"></REL>
+<REL idObj="24" idAtt="7"></REL>
+<REL idObj="25" idAtt="0"></REL>
+<REL idObj="25" idAtt="3"></REL>
+<REL idObj="25" idAtt="5"></REL>
+<REL idObj="25" idAtt="8"></REL>
+<REL idObj="26" idAtt="1"></REL>
+<REL idObj="26" idAtt="4"></REL>
+<REL idObj="26" idAtt="5"></REL>
+<REL idObj="26" idAtt="7"></REL>
+<REL idObj="27" idAtt="1"></REL>
+<REL idObj="27" idAtt="3"></REL>
+<REL idObj="27" idAtt="6"></REL>
+<REL idObj="27" idAtt="8"></REL>
+<REL idObj="28" idAtt="1"></REL>
+<REL idObj="28" idAtt="3"></REL>
+<REL idObj="28" idAtt="6"></REL>
+<REL idObj="28" idAtt="7"></REL>
+<REL idObj="29" idAtt="1"></REL>
+<REL idObj="29" idAtt="3"></REL>
+<REL idObj="29" idAtt="5"></REL>
+<REL idObj="29" idAtt="7"></REL>
+<REL idObj="30" idAtt="1"></REL>
+<REL idObj="30" idAtt="4"></REL>
+<REL idObj="30" idAtt="5"></REL>
+<REL idObj="30" idAtt="7"></REL>
+<REL idObj="31" idAtt="0"></REL>
+<REL idObj="31" idAtt="3"></REL>
+<REL idObj="31" idAtt="5"></REL>
+<REL idObj="31" idAtt="7"></REL>
+<REL idObj="32" idAtt="1"></REL>
+<REL idObj="32" idAtt="4"></REL>
+<REL idObj="32" idAtt="5"></REL>
+<REL idObj="32" idAtt="7"></REL>
+<REL idObj="33" idAtt="0"></REL>
+<REL idObj="33" idAtt="3"></REL>
+<REL idObj="33" idAtt="5"></REL>
+<REL idObj="33" idAtt="7"></REL>
+<REL idObj="34" idAtt="1"></REL>
+<REL idObj="34" idAtt="3"></REL>
+<REL idObj="34" idAtt="5"></REL>
+<REL idObj="34" idAtt="7"></REL>
+<REL idObj="35" idAtt="0"></REL>
+<REL idObj="35" idAtt="4"></REL>
+<REL idObj="35" idAtt="5"></REL>
+<REL idObj="35" idAtt="8"></REL>
+<REL idObj="36" idAtt="0"></REL>
+<REL idObj="36" idAtt="4"></REL>
+<REL idObj="36" idAtt="5"></REL>
+<REL idObj="36" idAtt="7"></REL>
+<REL idObj="37" idAtt="0"></REL>
+<REL idObj="37" idAtt="3"></REL>
+<REL idObj="37" idAtt="5"></REL>
+<REL idObj="37" idAtt="7"></REL>
+<REL idObj="38" idAtt="0"></REL>
+<REL idObj="38" idAtt="4"></REL>
+<REL idObj="38" idAtt="5"></REL>
+<REL idObj="38" idAtt="7"></REL>
+<REL idObj="39" idAtt="0"></REL>
+<REL idObj="39" idAtt="3"></REL>
+<REL idObj="39" idAtt="5"></REL>
+<REL idObj="39" idAtt="8"></REL>
+<REL idObj="40" idAtt="0"></REL>
+<REL idObj="40" idAtt="3"></REL>
+<REL idObj="40" idAtt="5"></REL>
+<REL idObj="40" idAtt="8"></REL>
+<REL idObj="41" idAtt="1"></REL>
+<REL idObj="41" idAtt="4"></REL>
+<REL idObj="41" idAtt="5"></REL>
+<REL idObj="41" idAtt="7"></REL>
+<REL idObj="42" idAtt="0"></REL>
+<REL idObj="42" idAtt="3"></REL>
+<REL idObj="42" idAtt="5"></REL>
+<REL idObj="42" idAtt="7"></REL>
+<REL idObj="43" idAtt="0"></REL>
+<REL idObj="43" idAtt="3"></REL>
+<REL idObj="43" idAtt="5"></REL>
+<REL idObj="43" idAtt="7"></REL>
+<REL idObj="44" idAtt="1"></REL>
+<REL idObj="44" idAtt="3"></REL>
+<REL idObj="44" idAtt="5"></REL>
+<REL idObj="44" idAtt="7"></REL>
+<REL idObj="45" idAtt="0"></REL>
+<REL idObj="45" idAtt="3"></REL>
+<REL idObj="45" idAtt="5"></REL>
+<REL idObj="45" idAtt="8"></REL>
+<REL idObj="46" idAtt="0"></REL>
+<REL idObj="46" idAtt="3"></REL>
+<REL idObj="46" idAtt="5"></REL>
+<REL idObj="46" idAtt="8"></REL>
+<REL idObj="47" idAtt="1"></REL>
+<REL idObj="47" idAtt="3"></REL>
+<REL idObj="47" idAtt="5"></REL>
+<REL idObj="47" idAtt="7"></REL>
+<REL idObj="48" idAtt="0"></REL>
+<REL idObj="48" idAtt="3"></REL>
+<REL idObj="48" idAtt="5"></REL>
+<REL idObj="48" idAtt="7"></REL>
+<REL idObj="49" idAtt="1"></REL>
+<REL idObj="49" idAtt="4"></REL>
+<REL idObj="49" idAtt="5"></REL>
+<REL idObj="49" idAtt="7"></REL>
+<REL idObj="50" idAtt="1"></REL>
+<REL idObj="50" idAtt="3"></REL>
+<REL idObj="50" idAtt="5"></REL>
+<REL idObj="50" idAtt="7"></REL>
+<REL idObj="51" idAtt="0"></REL>
+<REL idObj="51" idAtt="4"></REL>
+<REL idObj="51" idAtt="5"></REL>
+<REL idObj="51" idAtt="8"></REL>
+<REL idObj="52" idAtt="0"></REL>
+<REL idObj="52" idAtt="3"></REL>
+<REL idObj="52" idAtt="5"></REL>
+<REL idObj="52" idAtt="7"></REL>
+<REL idObj="53" idAtt="0"></REL>
+<REL idObj="53" idAtt="3"></REL>
+<REL idObj="53" idAtt="5"></REL>
+<REL idObj="53" idAtt="8"></REL>
+<REL idObj="54" idAtt="1"></REL>
+<REL idObj="54" idAtt="4"></REL>
+<REL idObj="54" idAtt="6"></REL>
+<REL idObj="54" idAtt="8"></REL>
+<REL idObj="55" idAtt="0"></REL>
+<REL idObj="55" idAtt="4"></REL>
+<REL idObj="55" idAtt="5"></REL>
+<REL idObj="55" idAtt="8"></REL>
+<REL idObj="56" idAtt="0"></REL>
+<REL idObj="56" idAtt="4"></REL>
+<REL idObj="56" idAtt="5"></REL>
+<REL idObj="56" idAtt="8"></REL>
+<REL idObj="57" idAtt="1"></REL>
+<REL idObj="57" idAtt="3"></REL>
+<REL idObj="57" idAtt="5"></REL>
+<REL idObj="57" idAtt="7"></REL>
+<REL idObj="58" idAtt="1"></REL>
+<REL idObj="58" idAtt="4"></REL>
+<REL idObj="58" idAtt="5"></REL>
+<REL idObj="58" idAtt="7"></REL>
+<REL idObj="59" idAtt="0"></REL>
+<REL idObj="59" idAtt="3"></REL>
+<REL idObj="59" idAtt="6"></REL>
+<REL idObj="59" idAtt="8"></REL>
+<REL idObj="60" idAtt="0"></REL>
+<REL idObj="60" idAtt="4"></REL>
+<REL idObj="60" idAtt="5"></REL>
+<REL idObj="60" idAtt="7"></REL>
+<REL idObj="61" idAtt="0"></REL>
+<REL idObj="61" idAtt="4"></REL>
+<REL idObj="61" idAtt="5"></REL>
+<REL idObj="61" idAtt="8"></REL>
+<REL idObj="62" idAtt="0"></REL>
+<REL idObj="62" idAtt="3"></REL>
+<REL idObj="62" idAtt="5"></REL>
+<REL idObj="62" idAtt="8"></REL>
+<REL idObj="63" idAtt="2"></REL>
+<REL idObj="63" idAtt="3"></REL>
+<REL idObj="63" idAtt="5"></REL>
+<REL idObj="63" idAtt="7"></REL>
+<REL idObj="64" idAtt="0"></REL>
+<REL idObj="64" idAtt="4"></REL>
+<REL idObj="64" idAtt="5"></REL>
+<REL idObj="64" idAtt="7"></REL>
+<REL idObj="65" idAtt="1"></REL>
+<REL idObj="65" idAtt="3"></REL>
+<REL idObj="65" idAtt="6"></REL>
+<REL idObj="65" idAtt="7"></REL>
+<REL idObj="66" idAtt="1"></REL>
+<REL idObj="66" idAtt="3"></REL>
+<REL idObj="66" idAtt="6"></REL>
+<REL idObj="66" idAtt="7"></REL>
+<REL idObj="67" idAtt="1"></REL>
+<REL idObj="67" idAtt="3"></REL>
+<REL idObj="67" idAtt="5"></REL>
+<REL idObj="67" idAtt="7"></REL>
+<REL idObj="68" idAtt="0"></REL>
+<REL idObj="68" idAtt="3"></REL>
+<REL idObj="68" idAtt="5"></REL>
+<REL idObj="68" idAtt="7"></REL>
+<REL idObj="69" idAtt="2"></REL>
+<REL idObj="69" idAtt="3"></REL>
+<REL idObj="69" idAtt="5"></REL>
+<REL idObj="69" idAtt="8"></REL>
+<REL idObj="70" idAtt="0"></REL>
+<REL idObj="70" idAtt="3"></REL>
+<REL idObj="70" idAtt="5"></REL>
+<REL idObj="70" idAtt="8"></REL>
+<REL idObj="71" idAtt="0"></REL>
+<REL idObj="71" idAtt="3"></REL>
+<REL idObj="71" idAtt="5"></REL>
+<REL idObj="71" idAtt="7"></REL>
+<REL idObj="72" idAtt="1"></REL>
+<REL idObj="72" idAtt="3"></REL>
+<REL idObj="72" idAtt="6"></REL>
+<REL idObj="72" idAtt="8"></REL>
+<REL idObj="73" idAtt="0"></REL>
+<REL idObj="73" idAtt="3"></REL>
+<REL idObj="73" idAtt="5"></REL>
+<REL idObj="73" idAtt="8"></REL>
+<REL idObj="74" idAtt="1"></REL>
+<REL idObj="74" idAtt="3"></REL>
+<REL idObj="74" idAtt="5"></REL>
+<REL idObj="74" idAtt="7"></REL>
+<REL idObj="75" idAtt="0"></REL>
+<REL idObj="75" idAtt="4"></REL>
+<REL idObj="75" idAtt="5"></REL>
+<REL idObj="75" idAtt="8"></REL>
+<REL idObj="76" idAtt="0"></REL>
+<REL idObj="76" idAtt="3"></REL>
+<REL idObj="76" idAtt="5"></REL>
+<REL idObj="76" idAtt="8"></REL>
+<REL idObj="77" idAtt="0"></REL>
+<REL idObj="77" idAtt="4"></REL>
+<REL idObj="77" idAtt="5"></REL>
+<REL idObj="77" idAtt="7"></REL>
+<REL idObj="78" idAtt="2"></REL>
+<REL idObj="78" idAtt="3"></REL>
+<REL idObj="78" idAtt="5"></REL>
+<REL idObj="78" idAtt="7"></REL>
+<REL idObj="79" idAtt="0"></REL>
+<REL idObj="79" idAtt="4"></REL>
+<REL idObj="79" idAtt="5"></REL>
+<REL idObj="79" idAtt="7"></REL>
+<REL idObj="80" idAtt="0"></REL>
+<REL idObj="80" idAtt="4"></REL>
+<REL idObj="80" idAtt="5"></REL>
+<REL idObj="80" idAtt="8"></REL>
+<REL idObj="81" idAtt="1"></REL>
+<REL idObj="81" idAtt="3"></REL>
+<REL idObj="81" idAtt="5"></REL>
+<REL idObj="81" idAtt="7"></REL>
+<REL idObj="82" idAtt="2"></REL>
+<REL idObj="82" idAtt="3"></REL>
+<REL idObj="82" idAtt="5"></REL>
+<REL idObj="82" idAtt="8"></REL>
+<REL idObj="83" idAtt="1"></REL>
+<REL idObj="83" idAtt="4"></REL>
+<REL idObj="83" idAtt="5"></REL>
+<REL idObj="83" idAtt="7"></REL>
+<REL idObj="84" idAtt="1"></REL>
+<REL idObj="84" idAtt="4"></REL>
+<REL idObj="84" idAtt="5"></REL>
+<REL idObj="84" idAtt="7"></REL>
+<REL idObj="85" idAtt="1"></REL>
+<REL idObj="85" idAtt="4"></REL>
+<REL idObj="85" idAtt="5"></REL>
+<REL idObj="85" idAtt="7"></REL>
+<REL idObj="86" idAtt="0"></REL>
+<REL idObj="86" idAtt="4"></REL>
+<REL idObj="86" idAtt="5"></REL>
+<REL idObj="86" idAtt="7"></REL>
+<REL idObj="87" idAtt="1"></REL>
+<REL idObj="87" idAtt="4"></REL>
+<REL idObj="87" idAtt="6"></REL>
+<REL idObj="87" idAtt="7"></REL>
+<REL idObj="88" idAtt="0"></REL>
+<REL idObj="88" idAtt="4"></REL>
+<REL idObj="88" idAtt="5"></REL>
+<REL idObj="88" idAtt="8"></REL>
+<REL idObj="89" idAtt="0"></REL>
+<REL idObj="89" idAtt="3"></REL>
+<REL idObj="89" idAtt="5"></REL>
+<REL idObj="89" idAtt="7"></REL>
+<REL idObj="90" idAtt="1"></REL>
+<REL idObj="90" idAtt="3"></REL>
+<REL idObj="90" idAtt="6"></REL>
+<REL idObj="90" idAtt="7"></REL>
+<REL idObj="91" idAtt="0"></REL>
+<REL idObj="91" idAtt="3"></REL>
+<REL idObj="91" idAtt="5"></REL>
+<REL idObj="91" idAtt="8"></REL>
+<REL idObj="92" idAtt="0"></REL>
+<REL idObj="92" idAtt="3"></REL>
+<REL idObj="92" idAtt="5"></REL>
+<REL idObj="92" idAtt="8"></REL>
+<REL idObj="93" idAtt="0"></REL>
+<REL idObj="93" idAtt="4"></REL>
+<REL idObj="93" idAtt="5"></REL>
+<REL idObj="93" idAtt="7"></REL>
+<REL idObj="94" idAtt="1"></REL>
+<REL idObj="94" idAtt="3"></REL>
+<REL idObj="94" idAtt="6"></REL>
+<REL idObj="94" idAtt="7"></REL>
+<REL idObj="95" idAtt="0"></REL>
+<REL idObj="95" idAtt="4"></REL>
+<REL idObj="95" idAtt="5"></REL>
+<REL idObj="95" idAtt="7"></REL>
+<REL idObj="96" idAtt="0"></REL>
+<REL idObj="96" idAtt="3"></REL>
+<REL idObj="96" idAtt="5"></REL>
+<REL idObj="96" idAtt="7"></REL>
+<REL idObj="97" idAtt="2"></REL>
+<REL idObj="97" idAtt="3"></REL>
+<REL idObj="97" idAtt="5"></REL>
+<REL idObj="97" idAtt="8"></REL>
+<REL idObj="98" idAtt="0"></REL>
+<REL idObj="98" idAtt="4"></REL>
+<REL idObj="98" idAtt="5"></REL>
+<REL idObj="98" idAtt="7"></REL>
+<REL idObj="99" idAtt="0"></REL>
+<REL idObj="99" idAtt="3"></REL>
+<REL idObj="99" idAtt="5"></REL>
+<REL idObj="99" idAtt="7"></REL>
+</RELS>
+</BIN>
+<BIN name="dfindic.txt" nbObj="100" nbAtt="9" type="BinaryRelation">
+<OBJS>
+<OBJ id="0">obj_0</OBJ>
+<OBJ id="1">obj_1</OBJ>
+<OBJ id="2">obj_2</OBJ>
+<OBJ id="3">obj_3</OBJ>
+<OBJ id="4">obj_4</OBJ>
+<OBJ id="5">obj_5</OBJ>
+<OBJ id="6">obj_6</OBJ>
+<OBJ id="7">obj_7</OBJ>
+<OBJ id="8">obj_8</OBJ>
+<OBJ id="9">obj_9</OBJ>
+<OBJ id="10">obj_10</OBJ>
+<OBJ id="11">obj_11</OBJ>
+<OBJ id="12">obj_12</OBJ>
+<OBJ id="13">obj_13</OBJ>
+<OBJ id="14">obj_14</OBJ>
+<OBJ id="15">obj_15</OBJ>
+<OBJ id="16">obj_16</OBJ>
+<OBJ id="17">obj_17</OBJ>
+<OBJ id="18">obj_18</OBJ>
+<OBJ id="19">obj_19</OBJ>
+<OBJ id="20">obj_20</OBJ>
+<OBJ id="21">obj_21</OBJ>
+<OBJ id="22">obj_22</OBJ>
+<OBJ id="23">obj_23</OBJ>
+<OBJ id="24">obj_24</OBJ>
+<OBJ id="25">obj_25</OBJ>
+<OBJ id="26">obj_26</OBJ>
+<OBJ id="27">obj_27</OBJ>
+<OBJ id="28">obj_28</OBJ>
+<OBJ id="29">obj_29</OBJ>
+<OBJ id="30">obj_30</OBJ>
+<OBJ id="31">obj_31</OBJ>
+<OBJ id="32">obj_32</OBJ>
+<OBJ id="33">obj_33</OBJ>
+<OBJ id="34">obj_34</OBJ>
+<OBJ id="35">obj_35</OBJ>
+<OBJ id="36">obj_36</OBJ>
+<OBJ id="37">obj_37</OBJ>
+<OBJ id="38">obj_38</OBJ>
+<OBJ id="39">obj_39</OBJ>
+<OBJ id="40">obj_40</OBJ>
+<OBJ id="41">obj_41</OBJ>
+<OBJ id="42">obj_42</OBJ>
+<OBJ id="43">obj_43</OBJ>
+<OBJ id="44">obj_44</OBJ>
+<OBJ id="45">obj_45</OBJ>
+<OBJ id="46">obj_46</OBJ>
+<OBJ id="47">obj_47</OBJ>
+<OBJ id="48">obj_48</OBJ>
+<OBJ id="49">obj_49</OBJ>
+<OBJ id="50">obj_50</OBJ>
+<OBJ id="51">obj_51</OBJ>
+<OBJ id="52">obj_52</OBJ>
+<OBJ id="53">obj_53</OBJ>
+<OBJ id="54">obj_54</OBJ>
+<OBJ id="55">obj_55</OBJ>
+<OBJ id="56">obj_56</OBJ>
+<OBJ id="57">obj_57</OBJ>
+<OBJ id="58">obj_58</OBJ>
+<OBJ id="59">obj_59</OBJ>
+<OBJ id="60">obj_60</OBJ>
+<OBJ id="61">obj_61</OBJ>
+<OBJ id="62">obj_62</OBJ>
+<OBJ id="63">obj_63</OBJ>
+<OBJ id="64">obj_64</OBJ>
+<OBJ id="65">obj_65</OBJ>
+<OBJ id="66">obj_66</OBJ>
+<OBJ id="67">obj_67</OBJ>
+<OBJ id="68">obj_68</OBJ>
+<OBJ id="69">obj_69</OBJ>
+<OBJ id="70">obj_70</OBJ>
+<OBJ id="71">obj_71</OBJ>
+<OBJ id="72">obj_72</OBJ>
+<OBJ id="73">obj_73</OBJ>
+<OBJ id="74">obj_74</OBJ>
+<OBJ id="75">obj_75</OBJ>
+<OBJ id="76">obj_76</OBJ>
+<OBJ id="77">obj_77</OBJ>
+<OBJ id="78">obj_78</OBJ>
+<OBJ id="79">obj_79</OBJ>
+<OBJ id="80">obj_80</OBJ>
+<OBJ id="81">obj_81</OBJ>
+<OBJ id="82">obj_82</OBJ>
+<OBJ id="83">obj_83</OBJ>
+<OBJ id="84">obj_84</OBJ>
+<OBJ id="85">obj_85</OBJ>
+<OBJ id="86">obj_86</OBJ>
+<OBJ id="87">obj_87</OBJ>
+<OBJ id="88">obj_88</OBJ>
+<OBJ id="89">obj_89</OBJ>
+<OBJ id="90">obj_90</OBJ>
+<OBJ id="91">obj_91</OBJ>
+<OBJ id="92">obj_92</OBJ>
+<OBJ id="93">obj_93</OBJ>
+<OBJ id="94">obj_94</OBJ>
+<OBJ id="95">obj_95</OBJ>
+<OBJ id="96">obj_96</OBJ>
+<OBJ id="97">obj_97</OBJ>
+<OBJ id="98">obj_98</OBJ>
+<OBJ id="99">obj_99</OBJ>
+</OBJS>
+<ATTS>
+<ATT id="0">att_0</ATT>
+<ATT id="1">att_1</ATT>
+<ATT id="2">att_2</ATT>
+<ATT id="3">att_3</ATT>
+<ATT id="4">att_4</ATT>
+<ATT id="5">att_5</ATT>
+<ATT id="6">att_6</ATT>
+<ATT id="7">att_7</ATT>
+<ATT id="8">att_8</ATT>
+</ATTS>
+<RELS>
+<REL idObj="0" idAtt="0"></REL>
+<REL idObj="0" idAtt="3"></REL>
+<REL idObj="0" idAtt="5"></REL>
+<REL idObj="0" idAtt="7"></REL>
+<REL idObj="1" idAtt="0"></REL>
+<REL idObj="1" idAtt="3"></REL>
+<REL idObj="1" idAtt="6"></REL>
+<REL idObj="1" idAtt="8"></REL>
+<REL idObj="2" idAtt="1"></REL>
+<REL idObj="2" idAtt="3"></REL>
+<REL idObj="2" idAtt="6"></REL>
+<REL idObj="2" idAtt="7"></REL>
+<REL idObj="3" idAtt="1"></REL>
+<REL idObj="3" idAtt="3"></REL>
+<REL idObj="3" idAtt="5"></REL>
+<REL idObj="3" idAtt="7"></REL>
+<REL idObj="4" idAtt="1"></REL>
+<REL idObj="4" idAtt="4"></REL>
+<REL idObj="4" idAtt="5"></REL>
+<REL idObj="4" idAtt="8"></REL>
+<REL idObj="5" idAtt="0"></REL>
+<REL idObj="5" idAtt="3"></REL>
+<REL idObj="5" idAtt="5"></REL>
+<REL idObj="5" idAtt="8"></REL>
+<REL idObj="6" idAtt="0"></REL>
+<REL idObj="6" idAtt="4"></REL>
+<REL idObj="6" idAtt="5"></REL>
+<REL idObj="6" idAtt="7"></REL>
+<REL idObj="7" idAtt="0"></REL>
+<REL idObj="7" idAtt="3"></REL>
+<REL idObj="7" idAtt="5"></REL>
+<REL idObj="7" idAtt="7"></REL>
+<REL idObj="8" idAtt="0"></REL>
+<REL idObj="8" idAtt="3"></REL>
+<REL idObj="8" idAtt="6"></REL>
+<REL idObj="8" idAtt="7"></REL>
+<REL idObj="9" idAtt="1"></REL>
+<REL idObj="9" idAtt="3"></REL>
+<REL idObj="9" idAtt="6"></REL>
+<REL idObj="9" idAtt="7"></REL>
+<REL idObj="10" idAtt="0"></REL>
+<REL idObj="10" idAtt="3"></REL>
+<REL idObj="10" idAtt="5"></REL>
+<REL idObj="10" idAtt="8"></REL>
+<REL idObj="11" idAtt="1"></REL>
+<REL idObj="11" idAtt="3"></REL>
+<REL idObj="11" idAtt="6"></REL>
+<REL idObj="11" idAtt="8"></REL>
+<REL idObj="12" idAtt="1"></REL>
+<REL idObj="12" idAtt="3"></REL>
+<REL idObj="12" idAtt="6"></REL>
+<REL idObj="12" idAtt="7"></REL>
+<REL idObj="13" idAtt="0"></REL>
+<REL idObj="13" idAtt="3"></REL>
+<REL idObj="13" idAtt="5"></REL>
+<REL idObj="13" idAtt="7"></REL>
+<REL idObj="14" idAtt="1"></REL>
+<REL idObj="14" idAtt="4"></REL>
+<REL idObj="14" idAtt="5"></REL>
+<REL idObj="14" idAtt="7"></REL>
+<REL idObj="15" idAtt="0"></REL>
+<REL idObj="15" idAtt="4"></REL>
+<REL idObj="15" idAtt="5"></REL>
+<REL idObj="15" idAtt="7"></REL>
+<REL idObj="16" idAtt="0"></REL>
+<REL idObj="16" idAtt="3"></REL>
+<REL idObj="16" idAtt="5"></REL>
+<REL idObj="16" idAtt="8"></REL>
+<REL idObj="17" idAtt="1"></REL>
+<REL idObj="17" idAtt="3"></REL>
+<REL idObj="17" idAtt="6"></REL>
+<REL idObj="17" idAtt="7"></REL>
+<REL idObj="18" idAtt="0"></REL>
+<REL idObj="18" idAtt="3"></REL>
+<REL idObj="18" idAtt="5"></REL>
+<REL idObj="18" idAtt="7"></REL>
+<REL idObj="19" idAtt="0"></REL>
+<REL idObj="19" idAtt="4"></REL>
+<REL idObj="19" idAtt="5"></REL>
+<REL idObj="19" idAtt="8"></REL>
+<REL idObj="20" idAtt="2"></REL>
+<REL idObj="20" idAtt="3"></REL>
+<REL idObj="20" idAtt="5"></REL>
+<REL idObj="20" idAtt="7"></REL>
+<REL idObj="21" idAtt="0"></REL>
+<REL idObj="21" idAtt="3"></REL>
+<REL idObj="21" idAtt="5"></REL>
+<REL idObj="21" idAtt="7"></REL>
+<REL idObj="22" idAtt="1"></REL>
+<REL idObj="22" idAtt="3"></REL>
+<REL idObj="22" idAtt="5"></REL>
+<REL idObj="22" idAtt="7"></REL>
+<REL idObj="23" idAtt="1"></REL>
+<REL idObj="23" idAtt="4"></REL>
+<REL idObj="23" idAtt="5"></REL>
+<REL idObj="23" idAtt="7"></REL>
+<REL idObj="24" idAtt="1"></REL>
+<REL idObj="24" idAtt="3"></REL>
+<REL idObj="24" idAtt="5"></REL>
+<REL idObj="24" idAtt="7"></REL>
+<REL idObj="25" idAtt="0"></REL>
+<REL idObj="25" idAtt="3"></REL>
+<REL idObj="25" idAtt="5"></REL>
+<REL idObj="25" idAtt="8"></REL>
+<REL idObj="26" idAtt="1"></REL>
+<REL idObj="26" idAtt="4"></REL>
+<REL idObj="26" idAtt="5"></REL>
+<REL idObj="26" idAtt="7"></REL>
+<REL idObj="27" idAtt="1"></REL>
+<REL idObj="27" idAtt="3"></REL>
+<REL idObj="27" idAtt="6"></REL>
+<REL idObj="27" idAtt="8"></REL>
+<REL idObj="28" idAtt="1"></REL>
+<REL idObj="28" idAtt="3"></REL>
+<REL idObj="28" idAtt="6"></REL>
+<REL idObj="28" idAtt="7"></REL>
+<REL idObj="29" idAtt="1"></REL>
+<REL idObj="29" idAtt="3"></REL>
+<REL idObj="29" idAtt="5"></REL>
+<REL idObj="29" idAtt="7"></REL>
+<REL idObj="30" idAtt="1"></REL>
+<REL idObj="30" idAtt="4"></REL>
+<REL idObj="30" idAtt="5"></REL>
+<REL idObj="30" idAtt="7"></REL>
+<REL idObj="31" idAtt="0"></REL>
+<REL idObj="31" idAtt="3"></REL>
+<REL idObj="31" idAtt="5"></REL>
+<REL idObj="31" idAtt="7"></REL>
+<REL idObj="32" idAtt="1"></REL>
+<REL idObj="32" idAtt="4"></REL>
+<REL idObj="32" idAtt="5"></REL>
+<REL idObj="32" idAtt="7"></REL>
+<REL idObj="33" idAtt="0"></REL>
+<REL idObj="33" idAtt="3"></REL>
+<REL idObj="33" idAtt="5"></REL>
+<REL idObj="33" idAtt="7"></REL>
+<REL idObj="34" idAtt="1"></REL>
+<REL idObj="34" idAtt="3"></REL>
+<REL idObj="34" idAtt="5"></REL>
+<REL idObj="34" idAtt="7"></REL>
+<REL idObj="35" idAtt="0"></REL>
+<REL idObj="35" idAtt="4"></REL>
+<REL idObj="35" idAtt="5"></REL>
+<REL idObj="35" idAtt="8"></REL>
+<REL idObj="36" idAtt="0"></REL>
+<REL idObj="36" idAtt="4"></REL>
+<REL idObj="36" idAtt="5"></REL>
+<REL idObj="36" idAtt="7"></REL>
+<REL idObj="37" idAtt="0"></REL>
+<REL idObj="37" idAtt="3"></REL>
+<REL idObj="37" idAtt="5"></REL>
+<REL idObj="37" idAtt="7"></REL>
+<REL idObj="38" idAtt="0"></REL>
+<REL idObj="38" idAtt="4"></REL>
+<REL idObj="38" idAtt="5"></REL>
+<REL idObj="38" idAtt="7"></REL>
+<REL idObj="39" idAtt="0"></REL>
+<REL idObj="39" idAtt="3"></REL>
+<REL idObj="39" idAtt="5"></REL>
+<REL idObj="39" idAtt="8"></REL>
+<REL idObj="40" idAtt="0"></REL>
+<REL idObj="40" idAtt="3"></REL>
+<REL idObj="40" idAtt="5"></REL>
+<REL idObj="40" idAtt="8"></REL>
+<REL idObj="41" idAtt="1"></REL>
+<REL idObj="41" idAtt="4"></REL>
+<REL idObj="41" idAtt="5"></REL>
+<REL idObj="41" idAtt="7"></REL>
+<REL idObj="42" idAtt="0"></REL>
+<REL idObj="42" idAtt="3"></REL>
+<REL idObj="42" idAtt="5"></REL>
+<REL idObj="42" idAtt="7"></REL>
+<REL idObj="43" idAtt="0"></REL>
+<REL idObj="43" idAtt="3"></REL>
+<REL idObj="43" idAtt="5"></REL>
+<REL idObj="43" idAtt="7"></REL>
+<REL idObj="44" idAtt="1"></REL>
+<REL idObj="44" idAtt="3"></REL>
+<REL idObj="44" idAtt="5"></REL>
+<REL idObj="44" idAtt="7"></REL>
+<REL idObj="45" idAtt="0"></REL>
+<REL idObj="45" idAtt="3"></REL>
+<REL idObj="45" idAtt="5"></REL>
+<REL idObj="45" idAtt="8"></REL>
+<REL idObj="46" idAtt="0"></REL>
+<REL idObj="46" idAtt="3"></REL>
+<REL idObj="46" idAtt="5"></REL>
+<REL idObj="46" idAtt="8"></REL>
+<REL idObj="47" idAtt="1"></REL>
+<REL idObj="47" idAtt="3"></REL>
+<REL idObj="47" idAtt="5"></REL>
+<REL idObj="47" idAtt="7"></REL>
+<REL idObj="48" idAtt="0"></REL>
+<REL idObj="48" idAtt="3"></REL>
+<REL idObj="48" idAtt="5"></REL>
+<REL idObj="48" idAtt="7"></REL>
+<REL idObj="49" idAtt="1"></REL>
+<REL idObj="49" idAtt="4"></REL>
+<REL idObj="49" idAtt="5"></REL>
+<REL idObj="49" idAtt="7"></REL>
+<REL idObj="50" idAtt="1"></REL>
+<REL idObj="50" idAtt="3"></REL>
+<REL idObj="50" idAtt="5"></REL>
+<REL idObj="50" idAtt="7"></REL>
+<REL idObj="51" idAtt="0"></REL>
+<REL idObj="51" idAtt="4"></REL>
+<REL idObj="51" idAtt="5"></REL>
+<REL idObj="51" idAtt="8"></REL>
+<REL idObj="52" idAtt="0"></REL>
+<REL idObj="52" idAtt="3"></REL>
+<REL idObj="52" idAtt="5"></REL>
+<REL idObj="52" idAtt="7"></REL>
+<REL idObj="53" idAtt="0"></REL>
+<REL idObj="53" idAtt="3"></REL>
+<REL idObj="53" idAtt="5"></REL>
+<REL idObj="53" idAtt="8"></REL>
+<REL idObj="54" idAtt="1"></REL>
+<REL idObj="54" idAtt="4"></REL>
+<REL idObj="54" idAtt="6"></REL>
+<REL idObj="54" idAtt="8"></REL>
+<REL idObj="55" idAtt="0"></REL>
+<REL idObj="55" idAtt="4"></REL>
+<REL idObj="55" idAtt="5"></REL>
+<REL idObj="55" idAtt="8"></REL>
+<REL idObj="56" idAtt="0"></REL>
+<REL idObj="56" idAtt="4"></REL>
+<REL idObj="56" idAtt="5"></REL>
+<REL idObj="56" idAtt="8"></REL>
+<REL idObj="57" idAtt="1"></REL>
+<REL idObj="57" idAtt="3"></REL>
+<REL idObj="57" idAtt="5"></REL>
+<REL idObj="57" idAtt="7"></REL>
+<REL idObj="58" idAtt="1"></REL>
+<REL idObj="58" idAtt="4"></REL>
+<REL idObj="58" idAtt="5"></REL>
+<REL idObj="58" idAtt="7"></REL>
+<REL idObj="59" idAtt="0"></REL>
+<REL idObj="59" idAtt="3"></REL>
+<REL idObj="59" idAtt="6"></REL>
+<REL idObj="59" idAtt="8"></REL>
+<REL idObj="60" idAtt="0"></REL>
+<REL idObj="60" idAtt="4"></REL>
+<REL idObj="60" idAtt="5"></REL>
+<REL idObj="60" idAtt="7"></REL>
+<REL idObj="61" idAtt="0"></REL>
+<REL idObj="61" idAtt="4"></REL>
+<REL idObj="61" idAtt="5"></REL>
+<REL idObj="61" idAtt="8"></REL>
+<REL idObj="62" idAtt="0"></REL>
+<REL idObj="62" idAtt="3"></REL>
+<REL idObj="62" idAtt="5"></REL>
+<REL idObj="62" idAtt="8"></REL>
+<REL idObj="63" idAtt="2"></REL>
+<REL idObj="63" idAtt="3"></REL>
+<REL idObj="63" idAtt="5"></REL>
+<REL idObj="63" idAtt="7"></REL>
+<REL idObj="64" idAtt="0"></REL>
+<REL idObj="64" idAtt="4"></REL>
+<REL idObj="64" idAtt="5"></REL>
+<REL idObj="64" idAtt="7"></REL>
+<REL idObj="65" idAtt="1"></REL>
+<REL idObj="65" idAtt="3"></REL>
+<REL idObj="65" idAtt="6"></REL>
+<REL idObj="65" idAtt="7"></REL>
+<REL idObj="66" idAtt="1"></REL>
+<REL idObj="66" idAtt="3"></REL>
+<REL idObj="66" idAtt="6"></REL>
+<REL idObj="66" idAtt="7"></REL>
+<REL idObj="67" idAtt="1"></REL>
+<REL idObj="67" idAtt="3"></REL>
+<REL idObj="67" idAtt="5"></REL>
+<REL idObj="67" idAtt="7"></REL>
+<REL idObj="68" idAtt="0"></REL>
+<REL idObj="68" idAtt="3"></REL>
+<REL idObj="68" idAtt="5"></REL>
+<REL idObj="68" idAtt="7"></REL>
+<REL idObj="69" idAtt="2"></REL>
+<REL idObj="69" idAtt="3"></REL>
+<REL idObj="69" idAtt="5"></REL>
+<REL idObj="69" idAtt="8"></REL>
+<REL idObj="70" idAtt="0"></REL>
+<REL idObj="70" idAtt="3"></REL>
+<REL idObj="70" idAtt="5"></REL>
+<REL idObj="70" idAtt="8"></REL>
+<REL idObj="71" idAtt="0"></REL>
+<REL idObj="71" idAtt="3"></REL>
+<REL idObj="71" idAtt="5"></REL>
+<REL idObj="71" idAtt="7"></REL>
+<REL idObj="72" idAtt="1"></REL>
+<REL idObj="72" idAtt="3"></REL>
+<REL idObj="72" idAtt="6"></REL>
+<REL idObj="72" idAtt="8"></REL>
+<REL idObj="73" idAtt="0"></REL>
+<REL idObj="73" idAtt="3"></REL>
+<REL idObj="73" idAtt="5"></REL>
+<REL idObj="73" idAtt="8"></REL>
+<REL idObj="74" idAtt="1"></REL>
+<REL idObj="74" idAtt="3"></REL>
+<REL idObj="74" idAtt="5"></REL>
+<REL idObj="74" idAtt="7"></REL>
+<REL idObj="75" idAtt="0"></REL>
+<REL idObj="75" idAtt="4"></REL>
+<REL idObj="75" idAtt="5"></REL>
+<REL idObj="75" idAtt="8"></REL>
+<REL idObj="76" idAtt="0"></REL>
+<REL idObj="76" idAtt="3"></REL>
+<REL idObj="76" idAtt="5"></REL>
+<REL idObj="76" idAtt="8"></REL>
+<REL idObj="77" idAtt="0"></REL>
+<REL idObj="77" idAtt="4"></REL>
+<REL idObj="77" idAtt="5"></REL>
+<REL idObj="77" idAtt="7"></REL>
+<REL idObj="78" idAtt="2"></REL>
+<REL idObj="78" idAtt="3"></REL>
+<REL idObj="78" idAtt="5"></REL>
+<REL idObj="78" idAtt="7"></REL>
+<REL idObj="79" idAtt="0"></REL>
+<REL idObj="79" idAtt="4"></REL>
+<REL idObj="79" idAtt="5"></REL>
+<REL idObj="79" idAtt="7"></REL>
+<REL idObj="80" idAtt="0"></REL>
+<REL idObj="80" idAtt="4"></REL>
+<REL idObj="80" idAtt="5"></REL>
+<REL idObj="80" idAtt="8"></REL>
+<REL idObj="81" idAtt="1"></REL>
+<REL idObj="81" idAtt="3"></REL>
+<REL idObj="81" idAtt="5"></REL>
+<REL idObj="81" idAtt="7"></REL>
+<REL idObj="82" idAtt="2"></REL>
+<REL idObj="82" idAtt="3"></REL>
+<REL idObj="82" idAtt="5"></REL>
+<REL idObj="82" idAtt="8"></REL>
+<REL idObj="83" idAtt="1"></REL>
+<REL idObj="83" idAtt="4"></REL>
+<REL idObj="83" idAtt="5"></REL>
+<REL idObj="83" idAtt="7"></REL>
+<REL idObj="84" idAtt="1"></REL>
+<REL idObj="84" idAtt="4"></REL>
+<REL idObj="84" idAtt="5"></REL>
+<REL idObj="84" idAtt="7"></REL>
+<REL idObj="85" idAtt="1"></REL>
+<REL idObj="85" idAtt="4"></REL>
+<REL idObj="85" idAtt="5"></REL>
+<REL idObj="85" idAtt="7"></REL>
+<REL idObj="86" idAtt="0"></REL>
+<REL idObj="86" idAtt="4"></REL>
+<REL idObj="86" idAtt="5"></REL>
+<REL idObj="86" idAtt="7"></REL>
+<REL idObj="87" idAtt="1"></REL>
+<REL idObj="87" idAtt="4"></REL>
+<REL idObj="87" idAtt="6"></REL>
+<REL idObj="87" idAtt="7"></REL>
+<REL idObj="88" idAtt="0"></REL>
+<REL idObj="88" idAtt="4"></REL>
+<REL idObj="88" idAtt="5"></REL>
+<REL idObj="88" idAtt="8"></REL>
+<REL idObj="89" idAtt="0"></REL>
+<REL idObj="89" idAtt="3"></REL>
+<REL idObj="89" idAtt="5"></REL>
+<REL idObj="89" idAtt="7"></REL>
+<REL idObj="90" idAtt="1"></REL>
+<REL idObj="90" idAtt="3"></REL>
+<REL idObj="90" idAtt="6"></REL>
+<REL idObj="90" idAtt="7"></REL>
+<REL idObj="91" idAtt="0"></REL>
+<REL idObj="91" idAtt="3"></REL>
+<REL idObj="91" idAtt="5"></REL>
+<REL idObj="91" idAtt="8"></REL>
+<REL idObj="92" idAtt="0"></REL>
+<REL idObj="92" idAtt="3"></REL>
+<REL idObj="92" idAtt="5"></REL>
+<REL idObj="92" idAtt="8"></REL>
+<REL idObj="93" idAtt="0"></REL>
+<REL idObj="93" idAtt="4"></REL>
+<REL idObj="93" idAtt="5"></REL>
+<REL idObj="93" idAtt="7"></REL>
+<REL idObj="94" idAtt="1"></REL>
+<REL idObj="94" idAtt="3"></REL>
+<REL idObj="94" idAtt="6"></REL>
+<REL idObj="94" idAtt="7"></REL>
+<REL idObj="95" idAtt="0"></REL>
+<REL idObj="95" idAtt="4"></REL>
+<REL idObj="95" idAtt="5"></REL>
+<REL idObj="95" idAtt="7"></REL>
+<REL idObj="96" idAtt="0"></REL>
+<REL idObj="96" idAtt="3"></REL>
+<REL idObj="96" idAtt="5"></REL>
+<REL idObj="96" idAtt="7"></REL>
+<REL idObj="97" idAtt="2"></REL>
+<REL idObj="97" idAtt="3"></REL>
+<REL idObj="97" idAtt="5"></REL>
+<REL idObj="97" idAtt="8"></REL>
+<REL idObj="98" idAtt="0"></REL>
+<REL idObj="98" idAtt="4"></REL>
+<REL idObj="98" idAtt="5"></REL>
+<REL idObj="98" idAtt="7"></REL>
+<REL idObj="99" idAtt="0"></REL>
+<REL idObj="99" idAtt="3"></REL>
+<REL idObj="99" idAtt="5"></REL>
+<REL idObj="99" idAtt="7"></REL>
+</RELS>
+</BIN>
+</FAM>

@@ -30,7 +30,15 @@ villes
 dv=dist(Villes, method="euclidean") #création de la matrice des distances euclidiennes:
 #print(dv)
 CAHV = hclust(d=dv, method = "ward.D") # CAH avec Ward 
+CAHV2<-hclust(d=dv, method = "ward.D2")
+CAHV3<-hclust(d=dv, method = "complete")
+CAHV4<-hclust(d=dv, method = "single")
+CAHV5<-hclust(d=dv, method = "average")
 plot(CAHV) #Dendrogramme de la hiérarchie indicée
+plot(CAHV2)
+plot(CAHV3)
+plot(CAHV4)
+plot(CAHV5)
 #Coupure de l'arbre et fabrication de la variable de classe correspondant à la partition obtenue, par exemple k=2 classes:
 PV2 = cutree(tree = CAHV, k=2)
 PV2
@@ -53,13 +61,18 @@ IC2Vil = data.frame(model.matrix(~as.factor(PV2)-1))
 print(IC2Vil)
 #Calcul matriciel des centres de gravité de classes de la CAH:
 mIC2Vil = as.matrix(IC2Vil)
+mIC2Vil
 mVil = as.matrix(villes)
+mVil
 CentresC2 = solve(t(mIC2Vil) %*% mIC2Vil)  %*%  t(mIC2Vil)%*% mVil
+CentresC2
+data.frame(CentresC2)
 #K-means à partir de ces centres initiaux
 KMV2 = kmeans(villes, CentresC2)
 #La variable de classe ainsi produite est dans
 KMV2$cluster
 KMV2
+villes
 ```
 Deux classes: "Ouest Parisien", "Reste de la France"
 Plus grand R^2: Salaire annuel (9)
@@ -68,8 +81,10 @@ Plus petit R^2: Logement Vacant (33)
 
 ```{r}
 Economie=as.data.frame(villes[,c(1:9,26:34,48:54)])
+Economie
 Risques=as.data.frame(villes[,10:25])
 Nature=as.data.frame(villes[,35:40])
+Nature
 Culture=as.data.frame(villes[,41:47])
 
 ```
@@ -87,19 +102,21 @@ mIC2ec
 mec = as.matrix(Economie)
 CentresC2E = solve(t(mIC2ec) %*% mIC2ec)  %*%  t(mIC2ec)%*% mec
 KMV2E = kmeans(Economie, CentresC2E)
+
 KMV2E_DF<-as.data.frame(KMV2E$cluster)
 KMV2E_DF
-R2_PV2E = cbind(rep(0 , ncol(villes)))
+R2_PV2E = cbind(rep(0 , ncol(Economie)))
 #Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
-for (i in cbind(1:ncol(villes))) {
-  R2_PV2E[i] = summary(lm(villes[,i]~as.factor(PV2E)))$r.squared}
+for (i in cbind(1:ncol(Economie))) {
+  R2_PV2E[i] = summary(lm(Economie[,i]~as.factor(PV2E)))$r.squared}
 #On peut réassigner les noms des variables aux éléments de ce vecteur
-row.names(R2_PV2E) = colnames(Villes)
+row.names(R2_PV2E) = colnames(Economie)
 which.max(R2_PV2E)
+boxplot(villes[,9]~as.factor(PV2E))
 R2_PV2E
 R2G_PV2E = mean(R2_PV2E)
-R2G_PV2E
-
+R2G_PV2E*100
+KMV2E
 ```
 La partition à travers les variables "Economie" permet de capter 18% des disparités.
 Variables les plus liées: salaire annuel, metre carré ancien, impot revenu
@@ -119,18 +136,19 @@ mIC2ris = as.matrix(IC2ris)
 mris = as.matrix(Risques)
 CentresC2R = solve(t(mIC2ris) %*% mIC2ris)  %*%  t(mIC2ris)%*% mris
 KMV2R = kmeans(Risques, CentresC2R)
+
 KMV2R_DF<-as.data.frame(KMV2R$cluster)
 KMV2R_DF
-R2_PV2R = cbind(rep(0 , ncol(villes)))
+R2_PV2R = cbind(rep(0 , ncol(Risques)))
 #Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
-for (i in cbind(1:ncol(villes))) {
-  R2_PV2R[i] = summary(lm(villes[,i]~as.factor(PV2R)))$r.squared}
+for (i in cbind(1:ncol(Risques))) {
+  R2_PV2R[i] = summary(lm(Risques[,i]~as.factor(PV2R)))$r.squared}
 #On peut réassigner les noms des variables aux éléments de ce vecteur
-row.names(R2_PV2R) = colnames(Villes)
+row.names(R2_PV2R) = colnames(Risques)
 R2_PV2R
 R2G_PV2R = mean(R2_PV2R)
-R2G_PV2R
-
+R2G_PV2R*100
+KMV2R
 ```
 
 Variables les plus liées: terrain pollué, mortalité globale, décès infarctus
@@ -169,6 +187,7 @@ dvn=dist(Nature, method="euclidean") #création de la matrice des distances euc
 CAHVN = hclust(d=dvn, method = "ward.D")
 plot(CAHVN)
 PV2N = cutree(tree = CAHVN, k=2)
+PV2N
 IC2nat = data.frame(model.matrix(~as.factor(PV2N)-1))
 colnames(IC2nat)<-c("Classe 1 Nat","Classe 2 Nat")
 mIC2nat = as.matrix(IC2nat)
@@ -177,23 +196,27 @@ CentresC2N = solve(t(mIC2nat) %*% mIC2nat)  %*%  t(mIC2nat)%*% mnat
 KMV2N = kmeans(Nature, CentresC2N)
 KMV2N_DF<-as.data.frame(KMV2N$cluster)
 KMV2N_DF
-R2_PV2N = cbind(rep(0 , ncol(villes)))
+R2_PV2N = cbind(rep(0 , ncol(Nature)))
+R2_PV2N
 #Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
-for (i in cbind(1:ncol(villes))) {
-  R2_PV2N[i] = summary(lm(villes[,i]~as.factor(PV2N)))$r.squared}
+for (i in cbind(1:ncol(Nature))) {
+  R2_PV2N[i] = summary(lm(Nature[,i]~as.factor(PV2N)))$r.squared}
 #On peut réassigner les noms des variables aux éléments de ce vecteur
-row.names(R2_PV2N) = colnames(Villes)
+row.names(R2_PV2N) = colnames(Nature)
 R2_PV2N
 which.max(R2_PV2N)
 R2G_PV2N = mean(R2_PV2N)
-R2G_PV2N
+R2G_PV2N*100
+KMV2N
 
+PV2N
 ```
 
 Variables les plus liées: Soleil, Pluie, Température
 Variable de classe: Localisation
 Classes: "Mer Méditerannée", "Reste de la France"
 La partition à travers les variables "Nature" permet de capter 8% des disparités.
+
 
 
 ```{r}
@@ -210,16 +233,17 @@ CentresC2C = solve(t(mIC2cul) %*% mIC2cul)  %*%  t(mIC2cul)%*% mcul
 KMV2C = kmeans(Culture, CentresC2C)
 KMV2C_DF<-as.data.frame(KMV2C$cluster)
 KMV2C_DF
-R2_PV2C = cbind(rep(0 , ncol(villes)))
+R2_PV2C = cbind(rep(0 , ncol(Culture)))
 #Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
-for (i in cbind(1:ncol(villes))) {
-  R2_PV2C[i] = summary(lm(villes[,i]~as.factor(PV2C)))$r.squared}
+for (i in cbind(1:ncol(Culture))) {
+  R2_PV2C[i] = summary(lm(Culture[,i]~as.factor(PV2C)))$r.squared}
 #On peut réassigner les noms des variables aux éléments de ce vecteur
-row.names(R2_PV2C) = colnames(Villes)
+row.names(R2_PV2C) = colnames(Culture)
 R2_PV2C
 which.max(R2_PV2C)
 R2G_PV2C = mean(R2_PV2C)
 R2G_PV2C
+KMV2C
 ```
 
 Variables les plus liées: Etudiant, Cinema,
@@ -266,8 +290,13 @@ write_delim(KMV2TOT_DF,"./dfindic.txt",col_names=FALSE)#pour exporter le fichier
 library(ClustOfVar)
 tree_var<-hclustvar(villes)
 plot(tree_var)
-CVAR = cutree(tree = tree_var, k=4)
-CVAR
+CVAR<-cutreevar(tree_var,k=4)
+CVAR$cluster
+KMVAR<-kmeansvar(X.quanti=villes,init=CVAR$cluster)
+KMVAR
+KMVAR$var
+KMVAR$cluster
+KMVAR$wss
 ```
 
 Classe 1:
