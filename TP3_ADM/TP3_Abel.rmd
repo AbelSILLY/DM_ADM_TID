@@ -1,0 +1,52 @@
+---
+title: "TP3Abel"
+output: html_document
+date: "2023-12-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+#### PREPARATION DES DONNEES ####
+X = data<-read.table('./villes.csv',header=TRUE,fill=TRUE)
+rname = X[,1]
+villes = X[2:55]
+row.names(villes) = rname
+n = nrow(X)
+Villes = scale(villes)*sqrt(n/(n-1))
+X = as.data.frame(Villes)
+X
+```
+
+```{r, echo=FALSE}
+PCAX = PCA(X)
+PCAX$eig
+barplot(PCAX$eig[,2])
+
+```
+
+
+```{r, echo=FALSE}
+plot.PCA(PCAX,axes = c(1,2),choix = 'var')
+plot.PCA(PCAX,axes = c(1,2),choix = 'ind')
+```
+
+
+```{r, echo=FALSE}
+plot.PCA(PCAX,axes = c(2,3),choix = 'var')
+plot.PCA(PCAX,axes = c(2,3),choix = 'ind')
+
+```
+
+```{r, echo=FALSE}
+plot.PCA(PCAX,axes = c(3,4),choix = 'var')
+plot.PCA(PCAX,axes = c(3,4),choix = 'ind')
+```
+
+
+
+
+
+
