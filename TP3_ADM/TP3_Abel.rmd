@@ -8,6 +8,8 @@ date: "2023-12-12"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# ACP GENERALE
+
 ```{r, echo=FALSE}
 #### PREPARATION DES DONNEES ####
 X = data<-read.table('./villes.csv',header=TRUE,fill=TRUE)
@@ -16,7 +18,6 @@ villes = X[2:55]
 row.names(villes) = rname
 n = nrow(X)
 X = as.data.frame(villes)
-X
 ```
 
 ```{r, echo=FALSE}
@@ -27,23 +28,108 @@ barplot(PCAX$eig[,2])
 
 ```
 
+Plus grands décrochement sur les 3 premières valeurs propres, mais que 36% d'information.
+Pousser jusqu'à 5 composantes pour avoir à peu près 50% ?
 
+### Aides à l'interprétation individus
+
+```{r, echo=FALSE}
+as.data.frame(PCAX$ind$dist)
+```
+```{r,echo=FALSE}
+as.data.frame(PCAX$ind$contrib)
+```
+```{r,echo=FALSE}
+as.data.frame(PCAX$ind$cos2)
+```
+
+### Aides à l'interprétation variables
+
+
+```{r, echo=FALSE}
+PCAX$var$contrib
+```
+```{r,echo=FALSE}
+PCAX$var$cos2
+```
+
+
+## Axes 1 et 2
 ```{r, echo=FALSE}
 plot.PCA(PCAX,axes = c(1,2),choix = 'var')
 plot.PCA(PCAX,axes = c(1,2),choix = 'ind')
 ```
 
+L'axes 1 semble faire référence au secteur économique.
+Neuilly originale du pdv de l'axe 1, on retrouve le groupe ouest parisien le long de cet axe.
 
+## Axes 2 et 3
 ```{r, echo=FALSE}
 plot.PCA(PCAX,axes = c(2,3),choix = 'var')
 plot.PCA(PCAX,axes = c(2,3),choix = 'ind')
 
 ```
 
+Axe 2 Nature ?
+
 ```{r, echo=FALSE}
 plot.PCA(PCAX,axes = c(3,4),choix = 'var')
 plot.PCA(PCAX,axes = c(3,4),choix = 'ind')
 ```
+
+
+## ACP avec ouest parisien en supplémentaire
+
+```{r,echo=FALSE}
+PCAXbis = PCA(X,ind.sup = c(21,64,70,79,83,98))
+PCAXbis$eig
+barplot(PCAXbis$eig[,2])
+```
+
+```{r,echo=FALSE}
+plot.PCA(PCAXbis,axes = c(1,2),choix = 'var')
+plot.PCA(PCAXbis,axes = c(1,2),choix = 'ind')
+```
+
+
+```{r,echo=FALSE}
+plot.PCA(PCAXbis,axes = c(2,3),choix = 'var')
+plot.PCA(PCAXbis,axes = c(2,3),choix = 'ind')
+```
+
+
+# ACP PAR THEMES
+
+```{r,echo=FALSE}
+Economie=as.data.frame(X[,c(1:9,26:34,48:54)])
+Economie
+Risques=as.data.frame(X[,10:25])
+Nature=as.data.frame(X[,35:40])
+Nature
+Culture=as.data.frame(X[,41:47])
+```
+
+## ECONOMIE
+
+```{r,echo=FALSE}
+PCAE = PCA(Economie)
+PCAE$eig
+barplot(PCAE$eig[,2])
+```
+
+4 axes ? 57% d'info
+
+```{r,echo=FALSE}
+plot.PCA(PCAE,axes = c(1,2),choix = 'var')
+plot.PCA(PCAE,axes = c(1,2),choix = 'ind')
+```
+
+```{r,echo=FALSE}
+plot.PCA(PCAE,axes = c(2,3),choix = 'var')
+plot.PCA(PCAE,axes = c(2,3),choix = 'ind')
+```
+
+
 
 
 
