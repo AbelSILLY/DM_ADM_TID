@@ -15,8 +15,7 @@ rname = X[,1]
 villes = X[2:55]
 row.names(villes) = rname
 n = nrow(X)
-Villes = scale(villes)*sqrt(n/(n-1))
-X = as.data.frame(Villes)
+X = as.data.frame(villes)
 X
 ```
 
