@@ -21,6 +21,7 @@ X
 ```
 
 ```{r, echo=FALSE}
+library(FactoMineR)
 PCAX = PCA(X)
 PCAX$eig
 barplot(PCAX$eig[,2])
