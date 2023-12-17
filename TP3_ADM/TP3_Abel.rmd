@@ -72,46 +72,74 @@ plot.PCA(PCAX,axes = c(2,3),choix = 'ind')
 
 Axe 2 Nature ?
 
+## Axes 3 et 4
+
 ```{r, echo=FALSE}
-plot.PCA(PCAX,axes = c(3,4),choix = 'var')
-plot.PCA(PCAX,axes = c(3,4),choix = 'ind')
+plot.PCA(PCAX,axes = c(3,4),choix = 'var',title = 'ACP VARIABLES AXES 3 ET 4')
+plot.PCA(PCAX,axes = c(3,4),choix = 'ind',title = 'ACP INDIVIDUS AXES 3 ET 4' )
 ```
 
+## Axes 4 et 5
+
+```{r, echo=FALSE}
+plot.PCA(PCAX,axes = c(4,5),choix = 'var',title = 'ACP VARIABLES AXES 4 ET 5')
+plot.PCA(PCAX,axes = c(4,5),choix = 'ind',title = 'ACP INDIVIDUS AXES 4 ET 5')
+```
 
 ## ACP avec ouest parisien en supplémentaire
 
 ```{r,echo=FALSE}
+library(FactoMineR)
 PCAXbis = PCA(X,ind.sup = c(21,64,70,79,83,98))
+X[70,]
 PCAXbis$eig
 barplot(PCAXbis$eig[,2])
 ```
 
 ```{r,echo=FALSE}
-plot.PCA(PCAXbis,axes = c(1,2),choix = 'var')
-plot.PCA(PCAXbis,axes = c(1,2),choix = 'ind')
+plot.PCA(PCAXbis,axes = c(1,2),choix = 'var',title = 'ACP générale axes 1 et 2 avec ouest parisien en supplémentaire')
+plot.PCA(PCAXbis,axes = c(1,2),choix = 'ind',title = 'ACP générale axes 1 et 2 avec ouest parisien en supplémentaire')
 ```
 
 
 ```{r,echo=FALSE}
-plot.PCA(PCAXbis,axes = c(2,3),choix = 'var')
-plot.PCA(PCAXbis,axes = c(2,3),choix = 'ind')
+plot.PCA(PCAXbis,axes = c(2,3),choix = 'var',title = 'ACP générale axes 2 et 3 avec ouest parisien en supplémentaire')
+plot.PCA(PCAXbis,axes = c(2,3),choix = 'ind',title = 'ACP générale axes 2 et 3 avec ouest parisien en supplémentaire')
 ```
+
+
+```{r,echo=FALSE}
+plot.PCA(PCAXbis,axes = c(3,4),choix = 'var',title = 'ACP générale axes 2 et 3 avec ouest parisien en supplémentaire')
+plot.PCA(PCAXbis,axes = c(3,4),choix = 'ind',title = 'ACP générale axes 2 et 3 avec ouest parisien en supplémentaire')
+```
+
+
+```{r,echo=FALSE}
+plot.PCA(PCAXbis,axes = c(4,5),choix = 'var',title = 'ACP générale axes 2 et 3 avec ouest parisien en supplémentaire')
+plot.PCA(PCAXbis,axes = c(4,5),choix = 'ind',title = 'ACP générale axes 2 et 3 avec ouest parisien en supplémentaire')
+```
+
+
+
+
+
+
+
 
 
 # ACP PAR THEMES
 
 ```{r,echo=FALSE}
 Economie=as.data.frame(X[,c(1:9,26:34,48:54)])
-Economie
 Risques=as.data.frame(X[,10:25])
 Nature=as.data.frame(X[,35:40])
-Nature
 Culture=as.data.frame(X[,41:47])
 ```
 
 ## ECONOMIE
 
 ```{r,echo=FALSE}
+library(FactoMineR)
 PCAE = PCA(Economie)
 PCAE$eig
 barplot(PCAE$eig[,2])
@@ -129,10 +157,96 @@ plot.PCA(PCAE,axes = c(2,3),choix = 'var')
 plot.PCA(PCAE,axes = c(2,3),choix = 'ind')
 ```
 
+```{r,echo=FALSE}
+plot.PCA(PCAE,axes = c(3,4),choix = 'var')
+plot.PCA(PCAE,axes = c(3,4),choix = 'ind')
+```
 
 
 
 
 
+## Riques
+
+```{r,echo=FALSE}
+library(FactoMineR)
+PCAR = PCA(Risques)
+PCAR$eig
+barplot(PCAR$eig[,2])
+```
+
+3 axes ?
 
 
+```{r,echo=FALSE}
+plot.PCA(PCAR,axes = c(1,2),choix = 'var')
+plot.PCA(PCAR,axes = c(1,2),choix = 'ind')
+```
+```{r,echo=FALSE}
+plot.PCA(PCAR,axes = c(2,3),choix = 'var')
+plot.PCA(PCAR,axes = c(2,3),choix = 'ind')
+```
+
+```{r,echo=FALSE}
+plot.PCA(PCAR,axes = c(1,3),choix = 'var')
+plot.PCA(PCAR,axes = c(1,3),choix = 'ind')
+```
+
+
+## Nature
+
+```{r,echo=FALSE}
+library(FactoMineR)
+PCAN = PCA(Nature)
+PCAN$eig
+barplot(PCAN$eig[,2])
+```
+
+2 axes, 73%.
+
+```{r,echo=FALSE}
+plot.PCA(PCAN,axes = c(1,2),choix = 'var')
+plot.PCA(PCAN,axes = c(1,2),choix = 'ind')
+```
+
+
+```{r,echo=FALSE}
+plot.PCA(PCAN,axes = c(2,3),choix = 'var')
+plot.PCA(PCAN,axes = c(2,3),choix = 'ind')
+```
+
+```{r,echo=FALSE}
+plot.PCA(PCAN,axes = c(1,3),choix = 'var')
+plot.PCA(PCAN,axes = c(1,3),choix = 'ind')
+```
+
+
+
+## Culture
+
+
+```{r,echo=FALSE}
+library(FactoMineR)
+PCAC = PCA(Culture)
+PCAC$eig
+barplot(PCAC$eig[,2])
+```
+
+2 axes, 63%
+
+```{r,echo=FALSE}
+plot.PCA(PCAC,axes = c(1,2),choix = 'var')
+plot.PCA(PCAC,axes = c(1,2),choix = 'ind')
+```
+
+```{r,echo=FALSE}
+library(FactoMineR)
+PCACbis = PCA(Culture,ind.sup = c(70))
+PCACbis$eig
+barplot(PCACbis$eig[,2])
+```
+
+```{r,echo=FALSE}
+plot.PCA(PCACbis,axes = c(1,2),choix = 'var')
+plot.PCA(PCACbis,axes = c(1,2),choix = 'ind')
+```
