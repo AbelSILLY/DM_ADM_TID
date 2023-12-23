@@ -1,0 +1,24 @@
+---
+title: "TP3"
+author: "Arthur TENA"
+date: "12/12/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+library(factoextra)
+data<-read.table('./villes.csv',header=TRUE,fill=TRUE)
+rname<-data[,1]
+rname
+Villes=data[2:55]
+row.names(Villes)<-rname
+Villes
+n=nrow(villes)
+villes=scale(Villes)*sqrt(n/(n-1))
+villes
+```
