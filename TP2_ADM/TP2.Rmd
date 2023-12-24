@@ -1,0 +1,217 @@
+---
+title: "TP2_ADM"
+author: "Arthur TENA"
+date: "11/7/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Question 1 :
+##Préparation des données :
+
+```{r}
+library(readr)
+library(factoextra)
+#villes <- read_delim("villes.csv", delim = "\t", 
+#    escape_double = FALSE, trim_ws = TRUE)
+#villes
+data<-read.table('./villes.csv',header=TRUE,fill=TRUE)
+rname<-data[,1]
+rname
+Villes=data[2:55]
+row.names(Villes)<-rname
+Villes
+n=nrow(villes)
+villes=scale(Villes)*sqrt(n/(n-1))
+villes
+dv=dist(Villes, method="euclidean") #création de la matrice des distances euclidiennes:
+#print(dv)
+CAHV = hclust(d=dv, method = "complete") # CAH avec Ward 
+plot(CAHV, main='Denrogramme de la hiérarchie indicée avec méthode complète')
+CAH = hclust(d=dv, method = "ward.D") # CAH avec Ward 
+plot(CAH, main='Denrogramme de la hiérarchie indicée avec méthode de Ward')#Dendrogramme de la hiérarchie indicée
+CAHV2 = hclust(d=dv, method = "single") # CAH avec Ward 
+plot(CAHV2, main='Denrogramme de la hiérarchie indicée avec méthode single')
+poids <- sort(CAHV2$height , decreasing=TRUE)
+plot(poids, type='h', xlab="Etapes dans l’ordre decroissant")
+CAHV2 = hclust(d=dv, method = "average") # CAH avec Ward 
+plot(CAHV2, main='Denrogramme de la hiérarchie indicée avec méthode moyenne')
+fviz_dend(CAHV, cex=0.1, lwd=0.2) #Afficher l’arbre avec les classes:
+fviz_dend(CAHV, cex=0.1, 2, k_colors = c("blue", "red"), rect = T, color_labels_by_k = T)
+#Affichage des indices de saut afin de savoir ou couper l’arbre:
+poids <- sort(CAHV$height , decreasing=TRUE)
+plot(poids, type='h', xlab="Etapes dans l’ordre decroissant")
+#Coupure de l'arbre et fabrication de la variable de classe correspondant à la partition obtenue, par exemple k=2 classes:
+PV2 = cutree(tree = CAHV, k=2)
+# Calcul du R2 des variables avec la variable de classe. On va stocker tous les R2 dans un seul vecteur: R2.
+R2_PV2 = cbind(rep(0 , ncol(villes)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2[i] = summary(lm(villes[,i]~as.factor(PV2)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2) = colnames(Villes)
+R2_PV2
+R2G_PV2 = mean(R2_PV2)
+R2G_PV2
+boxplot(villes[,'SalaireAnnuel']~as.factor(PV2),col='brown') 
+boxplot(villes[,'LogtVacant']~as.factor(PV2),col='red')
+#Transformation d'une variable qualitative en matrice d'indicatrices
+IC2Vil = data.frame(model.matrix(~as.factor(PV2)-1))
+print(IC2Vil)
+#Calcul matriciel des centres de gravité de classes de la CAH:
+mIC2Vil = as.matrix(IC2Vil)
+mVil = as.matrix(villes)
+CentresC2 = solve(t(mIC2Vil) %*% mIC2Vil)  %*%  t(mIC2Vil)%*% mVil
+#K-means à partir de ces centres initiaux
+KMV2 = kmeans(villes, CentresC2)
+#La variable de classe ainsi produite est dans
+KMV2$cluster
+```
+
+
+## Création de Dataframe par Catégorie :
+
+```{r}
+Economie=as.data.frame(villes[,c(1:9,26:34,48:54)])
+Risques=as.data.frame(villes[,10:25])
+Nature=as.data.frame(villes[,35:40])
+Culture=as.data.frame(villes[,41:47])
+
+#Economie :
+dve=dist(Economie, method="euclidean") #création de la matrice des distances euclidiennes
+CAHE = hclust(d=dve, method = "ward.D")
+plot(CAHVE, main='dendrogramme de l économie')
+fviz_dend(CAHE, cex=0.1, lwd=0.2) #Afficher l’arbre avec les classes:
+fviz_dend(CAHE, cex=0.1, 3, k_colors = c("blue", "red", "yellow"), rect = T, color_labels_by_k = T)
+PV2E = cutree(tree = CAHE, k=3)
+boxplot(Economie[,'SalaireAnnuel']~as.factor(PV2E),col='brown')
+IC2ec = data.frame(model.matrix(~as.factor(PV2)-1))
+mIC2ec = as.matrix(IC2ec)
+mec = as.matrix(Economie)
+CentresC2 = solve(t(mIC2ec) %*% mIC2ec)  %*%  t(mIC2ec)%*% mec
+KMV2 = kmeans(Economie, CentresC2)
+KMV2$cluster
+R2_PV2E = cbind(rep(0 , ncol(villes)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(villes))) {
+  R2_PV2E[i] = summary(lm(villes[,i]~as.factor(PV2E)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2E) = colnames(Villes)
+which.max(R2_PV2E)
+R2_PV2E
+R2G_PV2E = mean(R2_PV2E)
+R2G_PV2E
+poidsE <- sort(CAHE$height , decreasing=TRUE)
+plot(poidsE, type='h', xlab="Etapes dans l’ordre decroissant")
+```
+
+```{r}
+#Risques :
+dvr=dist(Risques, method="euclidean") #création de la matrice des distances euclidiennes
+CAHVR = hclust(d=dvr, method = "ward.D")
+plot(CAHVR,main='dendrogramme des risques')
+fviz_dend(CAHVR, cex=0.1, lwd=0.2) #Afficher l’arbre avec les classes:
+fviz_dend(CAHVR, cex=0.1, 2, k_colors = c("blue", "yellow"), rect = T, color_labels_by_k = T)
+PV2R = cutree(tree = CAHVR, k=2)
+IC2ris = data.frame(model.matrix(~as.factor(PV2)-1))
+mIC2ris = as.matrix(IC2ris)
+mris = as.matrix(Risques)
+CentresC2 = solve(t(mIC2ris) %*% mIC2ris)  %*%  t(mIC2ris)%*% mris
+KMV2 = kmeans(Risques, CentresC2)
+KMV2$cluster
+poidsR <- sort(CAHVR$height , decreasing=TRUE)
+plot(poidsR, type='h', xlab="Etapes dans l’ordre decroissant")
+
+R2_PV2R = cbind(rep(0 , ncol(Risques)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(Risques))) {
+  R2_PV2R[i] = summary(lm(Risques[,i]~as.factor(PV2R)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2R) = colnames(Risques)
+R2_PV2R
+which.max(R2_PV2R)
+R2G_PV2R = mean(R2_PV2R)
+R2G_PV2R
+```
+
+```{r}
+#Nature :
+dvn=dist(Nature, method="euclidean") #création de la matrice des distances euclidiennes
+CAHN = hclust(d=dvn, method = "ward.D")
+plot(CAHN, main='dendrogramme de la nature')
+fviz_dend(CAHN, cex=0.1, lwd=0.2) #Afficher l’arbre avec les classes:
+fviz_dend(CAHN, cex=0.1, 2, k_colors = c("red", "yellow"), rect = T, color_labels_by_k = T)
+PV2N = cutree(tree = CAHN, k=2)
+IC2nat = data.frame(model.matrix(~as.factor(PV2)-1))
+mIC2nat = as.matrix(IC2nat)
+mnat = as.matrix(Nature)
+CentresC2 = solve(t(mIC2nat) %*% mIC2nat)  %*%  t(mIC2nat)%*% mnat
+KMV2 = kmeans(Nature, CentresC2)
+KMV2$cluster
+poidsN <- sort(CAHN$height , decreasing=TRUE)
+plot(poidsN, type='h', xlab="Etapes dans l’ordre decroissant")
+
+R2_PV2N = cbind(rep(0 , ncol(Nature)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(Nature))) {
+  R2_PV2N[i] = summary(lm(Nature[,i]~as.factor(PV2N)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2N) = colnames(Nature)
+R2_PV2N
+which.max(R2_PV2N)
+R2G_PV2N = mean(R2_PV2N)
+R2G_PV2N
+```
+
+```{r}
+#Culture :
+dvc=dist(Culture, method="euclidean") #création de la matrice des distances euclidiennes
+CAHC = hclust(d=dvc, method = "ward.D")
+plot(CAHV, main='dendrogramme de la culture')
+fviz_dend(CAHC, cex=0.1, lwd=0.2) #Afficher l’arbre avec les classes:
+fviz_dend(CAHC, cex=0.1, 2, k_colors = c("blue", "red"), rect = T, color_labels_by_k = T)
+PV2C = cutree(tree = CAHV, k=2)
+boxplot(Culture[,'Etudiants']~as.factor(PV2),col='brown')
+IC2cul = data.frame(model.matrix(~as.factor(PV2)-1))
+mIC2cul = as.matrix(IC2cul)
+mcul = as.matrix(Culture)
+CentresC2 = solve(t(mIC2cul) %*% mIC2cul)  %*%  t(mIC2cul)%*% mcul
+KMV2 = kmeans(Culture, CentresC2)
+KMV2$cluster
+R2_PV2C = cbind(rep(0 , ncol(Culture)))
+#Puis, on calcule les R2 de toutes les variables avec la variable de classe et on met les résultats dans R2:
+for (i in cbind(1:ncol(Culture))) {
+  R2_PV2C[i] = summary(lm(Culture[,i]~as.factor(PV2C)))$r.squared}
+#On peut réassigner les noms des variables aux éléments de ce vecteur
+row.names(R2_PV2C) = colnames(Culture)
+R2_PV2C
+which.max(R2_PV2C)
+R2G_PV2C = mean(R2_PV2C)
+R2G_PV2C
+
+poidsC <- sort(CAHC$height , decreasing=TRUE)
+plot(poidsC, type='h', xlab="Etapes dans l’ordre decroissant")
+```
+
+```{r}
+library(ClustOfVar)
+CCvar=hclustvar(X.quanti = villes, X.quali = NULL, init = NULL)
+CCvar
+PCCvar=cutreevar(CCvar, k=4)$cluster
+PCCvar
+KmeanCC=kmeansvar(X.quanti=villes, init = PCCvar)
+KmeanCC$var
+varCC=KmeanCC$cluster
+varCC
+fviz_dend(CCvar, cex=0.1, lwd=0.2) #Afficher l’arbre avec les classes:
+fviz_dend(CCvar, cex=0.1, 4, k_colors = c("blue", "red","yellow","green"), rect = T, color_labels_by_k = T)
+```
+
+
